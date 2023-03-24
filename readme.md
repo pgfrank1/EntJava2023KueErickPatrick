@@ -39,6 +39,7 @@
     I have no issue with following directions until there's something 
     that I think can be improved upon and the leader doesn't allow it. I
     always am looking for ways to improve processes and implement them
+#### Kue Xiong
 ### Thinks fast on their feet?\
 #### Patrick Frank
     I had to do this quite a bit with my previous IT Help Desk position.
@@ -50,6 +51,9 @@
     I'm not the best at quick decisions. I like to get everyone's input
     before making one so I know that I chose the best decision
     based off of input other than my own
+#### Kue Xiong
+    When it's work related and the decisions affect more than just me, I like to
+    get feedback before implementing it.
 ### Is a thinker, rather than a talker?\
 #### Patrick Frank
     I'm definitely more of a thinker
@@ -92,7 +96,7 @@
 #### Patrick Frank
     I can handle criticism fairly well.
 #### Kue Xiong
-    I like to think that I can handle criticism well.
+    Yes.
 ### Has served as a tech lead?\
 #### Patrick Frank
     No
@@ -105,6 +109,7 @@
 ### Can explain MVC?\
 #### Patrick Frank
     Yes
+#### Kue Xiong
 ### Has experience with APIs?\
 #### Parick Frank
     Yes
@@ -137,4 +142,4 @@
 #### Patrick Frank
     No
 #### Kue Xiong
-    Yes, I have a M.S. in Clinical Psychology
+    Yes

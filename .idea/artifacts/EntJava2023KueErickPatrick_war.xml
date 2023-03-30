@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="EntJava2023KueErickPatrick:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>EntJava2023KueErickPatrick</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="EntJava2023KueErickPatrick.war">
+      <element id="artifact" artifact-name="EntJava2023KueErickPatrick:war exploded" />
+    </root>
+  </artifact>
+</component>

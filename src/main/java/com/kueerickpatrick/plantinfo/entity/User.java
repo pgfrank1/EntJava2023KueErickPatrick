@@ -16,10 +16,10 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
 
-    @Column(name = "firstName")
+    @Column(name = "firstname")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "lastname")
     private String lastName;
 
     @Column(name = "username")
@@ -30,7 +30,9 @@ public class User {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    //TODO - map one to many once API has been integrated
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,
+//            orphanRemoval = true, fetch = FetchType.EAGER)
+//    private Set<Plant> patients = new HashSet<>();
 
     /**
      * Instantiates a new User.

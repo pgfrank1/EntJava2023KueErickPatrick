@@ -14,10 +14,6 @@
           <element id="module-output" name="EntJava2023KueErickPatrick" />
         </element>
       </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/EntJava2023KueErickPatrick/META-INF/MANIFEST.MF" />
-      </element>
-      <element id="javaee-facet-resources" facet="EntJava2023KueErickPatrick/web/Web" />
     </root>
   </artifact>
 </component>

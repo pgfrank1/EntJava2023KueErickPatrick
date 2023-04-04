@@ -52,6 +52,7 @@ public class InitialSessionServlet extends HttpServlet {
         Client client = ClientBuilder.newClient();
         String plantInfoApiUrl = (String) getServletContext().getAttribute("plantListMainPageUrl") + 1
                 + "&" + getServletContext().getAttribute("apiKey");
+        logger.info("url is: " + plantInfoApiUrl);
         logger.debug("Attempting to retrieve plant details pages");
 
         WebTarget targetPlantDetails = client.target(plantInfoApiUrl);

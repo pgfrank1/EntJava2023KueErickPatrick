@@ -38,9 +38,10 @@ public class StartupServlet extends HttpServlet implements PropertiesLoader, Ser
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         try {
-            properties = loadProperties("/database.properties");
-
+//
             properties = loadProperties("/perenualAPI.properties");
+            logger.info("The main page is: " + properties.getProperty("plant.details.link"));
+
             sce.getServletContext().setAttribute("apiKey", properties.getProperty("api.key"));
             sce.getServletContext().setAttribute("plantListMainPageUrl", properties.getProperty("plant.list.main.page"));
             sce.getServletContext().setAttribute("plantDetailsUrl", properties.getProperty("plant.details.link"));

@@ -1,7 +1,6 @@
 package com.kueerickpatrick.plantinfo.entity;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;

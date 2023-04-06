@@ -175,7 +175,7 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin-version}</version>
                 </plugin>
-                <plugin>
+<!--                <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin-version}</version>
                     <dependencies>
@@ -185,7 +185,7 @@
                             <version>${junit-platform-runner-version}</version>
                         </dependency>
                     </dependencies>
-                </plugin>
+                </plugin>-->
             </plugins>
         </pluginManagement>
     </build>

@@ -50,7 +50,7 @@ public class UserDaoTest {
     void getByIdSuccess() {
         User retrievedUser = (User)genericDao.getById(1);
         assertNotNull(retrievedUser);
-        assertEquals("Kue", retrievedUser.getFirstName());
+        assertEquals("Kue", retrievedUser.getFirstname());
     }
 
     /**
@@ -60,7 +60,7 @@ public class UserDaoTest {
     void saveOrUpdate() {
         String newLastName = "Pikachu";
         User user = (User)genericDao.getById(1);
-        user.setLastName(newLastName);
+        user.setLastname(newLastName);
         genericDao.saveOrUpdate(user);
         User retrievedUser = (User)genericDao.getById(1);
         assertEquals(user,retrievedUser);

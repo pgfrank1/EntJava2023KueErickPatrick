@@ -1,6 +1,6 @@
 package com.kueerickpatrick.plantinfo.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -20,6 +20,7 @@ public class Userplant {
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "plantid")
+
     private Plant plantid;
 
     public Integer getId() {

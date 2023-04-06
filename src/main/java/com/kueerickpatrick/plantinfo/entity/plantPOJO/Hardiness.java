@@ -1,4 +1,4 @@
-package com.kueerickpatrick.plantinfo.entity.plantObjects;
+package com.kueerickpatrick.plantinfo.entity.plantPOJO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

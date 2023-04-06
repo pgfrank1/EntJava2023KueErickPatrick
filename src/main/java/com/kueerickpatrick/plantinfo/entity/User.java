@@ -1,161 +1,102 @@
 package com.kueerickpatrick.plantinfo.entity;
 
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * A class to represent a user.
- *
- * @author Kue Xiong
- */
 @Entity(name = "User")
 @Table(name = "user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
-    @Column(name = "firstname")
-    private String firstName;
+    @Column(name = "firstname", length = 30)
+    private String firstname;
 
-    @Column(name = "lastname")
-    private String lastName;
+    @Column(name = "lastname", length = 50)
+    private String lastname;
 
-    @Column(name = "username")
+    @Column(name = "username", length = 50)
     private String username;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private int id;
+    @OneToMany(mappedBy = "userid")
+    private Set<Userplant> userplants = new LinkedHashSet<>();
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,
-//            orphanRemoval = true, fetch = FetchType.EAGER)
-//    private Set<Plant> patients = new HashSet<>();
+    public User() {}
 
-    /**
-     * Instantiates a new User.
-     */
-    public User() {
-    }
-
-    /**
-     * Instantiates a new User.
-     *
-     * @param firstName the first name
-     * @param lastName  the last name
-     * @param username     the username
-     */
-    public User(String firstName, String lastName, String username) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String firstname, String lastname, String username) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.username = username;
     }
 
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * Gets first name.
-     *
-     * @return the first name
-     */
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    /**
-     * Sets first name.
-     *
-     * @param firstName the first name
-     */
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    /**
-     * Gets last name.
-     *
-     * @return the last name
-     */
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    /**
-     * Sets last name.
-     *
-     * @param lastName the last name
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-
-    /**
-     * Gets username.
-     *
-     * @return the username
-     */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * Sets username.
-     *
-     * @param username the username
-     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    //TODO: set list of plants for user
+    public Set<Userplant> getUserplants() {
+        return userplants;
+    }
 
-    //TODO: get list of plants for user
-
-    //TODO: add plant to to user profile
-
+    public void setUserplants(Set<Userplant> userplants) {
+        this.userplants = userplants;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id &&
-                firstName.equals(user.firstName) &&
-                lastName.equals(user.lastName) &&
+        return id.equals(user.id) &&
+                firstname.equals(user.firstname) &&
+                lastname.equals(user.lastname) &&
                 username.equals(user.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, username, id);
+        return Objects.hash(id, firstname, lastname, username);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", username='" + username + '\'' +
-                ", id=" + id +
                 '}';
     }
 }

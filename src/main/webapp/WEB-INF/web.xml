@@ -16,9 +16,13 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    <listener>
-        <listener-class>
-            com.kueerickpatrick.plantinfo.controller.StartupServlet
-        </listener-class>
-    </listener>
+    <servlet>
+        <servlet-name>StartupServlet</servlet-name>
+        <servlet-class>com.kueerickpatrick.plantinfo.controller.StartupServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StartupServlet</servlet-name>
+        <url-pattern>/StartupServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

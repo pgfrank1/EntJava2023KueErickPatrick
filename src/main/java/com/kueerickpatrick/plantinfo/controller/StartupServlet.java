@@ -54,5 +54,7 @@ public class StartupServlet extends HttpServlet implements PropertiesLoader, Ser
     }
 
     @Override
-    public void contextDestroyed(ServletContextEvent sce) { }
+    public void contextDestroyed(ServletContextEvent sce) {
+
+    }
 }

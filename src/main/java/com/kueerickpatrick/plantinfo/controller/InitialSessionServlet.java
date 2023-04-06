@@ -60,7 +60,6 @@ public class InitialSessionServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         PlantDetailList plantDetailList = mapper.readValue(apiResponse, PlantDetailList.class);
 
-        getServletContext().setAttribute("numberOfPages", plantDetailList.getLastPage());
         req.setAttribute("plantDetailMap", plantDetailList);
 
         String url = "/WEB-INF/index.jsp";

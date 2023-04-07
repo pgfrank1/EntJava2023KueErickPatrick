@@ -11,8 +11,10 @@ import java.util.Properties;
 /**
  * This class places all the properties that are needed within the application scope. It reduces the need to have a
  * properties loader within each class.
+ *
  * @author PGFrank1
  * @version 1.0
+ * @since 1.0
  */
 @WebListener
 public class StartupServlet extends HttpServlet implements PropertiesLoader {

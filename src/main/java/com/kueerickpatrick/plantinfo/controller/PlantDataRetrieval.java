@@ -23,13 +23,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class utilizes a RESTful API service to get the user's search term and look through the data for any
+ * term that matches the search
+ *
+ * @author pgfrank1
+ * @version 1.0
+ * @since 1.0
+ */
 @Path("/search")
 @Produces(MediaType.APPLICATION_JSON)
 public class PlantDataRetrieval implements PropertiesLoader {
+    /**
+     * The Servlet Context of the web application.
+     */
     @Context
     ServletContext context;
     private final Logger logger = LogManager.getLogger(this.getClass());
     private static List<DataItem> foundPlants;
+
+    /**
+     * Gets plant filtered info from the user's search term.
+     *
+     * @param searchTerm the user search term
+     * @return the plant filtered info
+     * @throws IOException the io exception that may happen when converting the List to JSON data
+     */
     @GET
     @Path("/{searchTerm}")
     public String getPlantFilteredInfo(@PathParam("searchTerm") String searchTerm) throws IOException {
@@ -52,6 +71,11 @@ public class PlantDataRetrieval implements PropertiesLoader {
         return mapper.writeValueAsString(filteredPlants);
     }
 
+    /**
+     * Gets plant details from the Perenual API and places those results within a list
+     *
+     * @throws JsonProcessingException the json processing exception
+     */
     public void getPlantDetails() throws JsonProcessingException {
         Client client = ClientBuilder.newClient();
         context.getAttribute("apiKey");

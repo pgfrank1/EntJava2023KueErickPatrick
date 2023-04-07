@@ -57,11 +57,11 @@ public class PlantDataRetrieval implements PropertiesLoader {
 
         for (DataItem plantData:
              foundPlants) {
-            if (plantData.getCommonName().contains(searchTerm)
-                    || plantData.getOtherName().stream().anyMatch(x -> x.equalsIgnoreCase(searchTerm))
-                    || plantData.getScientificName().stream().anyMatch(x -> x.equalsIgnoreCase(searchTerm))
-                    || plantData.getSunlight().stream().anyMatch(x -> x.equals(searchTerm))
-                    || plantData.getCycle().toLowerCase().contains(searchTerm)) {
+            if (plantData.getCommonName().toLowerCase().contains(searchTerm.toLowerCase())
+                    || plantData.getOtherName().stream().anyMatch(x -> x.equalsIgnoreCase(searchTerm.toLowerCase()))
+                    || plantData.getScientificName().stream().anyMatch(x -> x.equalsIgnoreCase(searchTerm.toLowerCase()))
+                    || plantData.getSunlight().stream().anyMatch(x -> x.equals(searchTerm.toLowerCase()))
+                    || plantData.getCycle().toLowerCase().contains(searchTerm.toLowerCase())) {
                 filteredPlants.add(plantData);
             }
         }

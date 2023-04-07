@@ -1,0 +1,17 @@
+/* site-wide background color */
+.bg-custom-mint-green {
+    background-color: #F5F8F2;
+}
+/* water level color */
+.bg-custom-sky-blue {
+    background-color: #ADEBE9;
+}
+/* sun level color */
+.bg-custom-light-gold {
+    background-color: #FCCF88;
+}
+/* plant logo sizing */
+.plant-logo-sizing {
+    width: 50px;
+    height: 50px;
+}

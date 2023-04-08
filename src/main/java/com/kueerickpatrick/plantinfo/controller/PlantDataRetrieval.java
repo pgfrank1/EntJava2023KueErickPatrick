@@ -19,6 +19,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,10 +52,9 @@ public class PlantDataRetrieval implements PropertiesLoader {
      */
     @GET
     @Path("/{searchTerm}")
-    public String getPlantFilteredInfo(@PathParam("searchTerm") String searchTerm) throws IOException {
+    public Response getPlantFilteredInfo(@PathParam("searchTerm") String searchTerm) throws IOException {
         List<DataItem> filteredPlants = new ArrayList<>();
         getPlantDetails();
-
         for (DataItem plantData:
              foundPlants) {
             if (plantData.getCommonName().toLowerCase().contains(searchTerm.toLowerCase())
@@ -67,8 +67,8 @@ public class PlantDataRetrieval implements PropertiesLoader {
         }
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-
-        return mapper.writeValueAsString(filteredPlants);
+        String output = mapper.writeValueAsString(filteredPlants);
+        return Response.status(200).entity(output).build();
     }
 
     /**

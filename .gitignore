@@ -56,3 +56,4 @@ crashlytics-build.properties
 fabric.properties
 aws.properties
 /src/test/resources
+/src/main/resources/

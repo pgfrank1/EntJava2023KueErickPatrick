@@ -1,7 +1,7 @@
 package com.kueerickpatrick.plantinfo.persistence;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kueerickpatrick.plantinfo.entity.plantPOJO.PlantDetailList;
+import com.kueerickpatrick.plantinfo.entity.plantObjects.PlantDetailList;
 import com.kueerickpatrick.plantinfo.util.PropertiesLoader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

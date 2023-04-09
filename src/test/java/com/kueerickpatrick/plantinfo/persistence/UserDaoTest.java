@@ -2,6 +2,7 @@ package com.kueerickpatrick.plantinfo.persistence;
 
 
 import com.kueerickpatrick.plantinfo.entity.User;
+import com.kueerickpatrick.plantinfo.entity.Userplant;
 import com.kueerickpatrick.plantinfo.test.util.Database;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -95,5 +96,14 @@ public class UserDaoTest {
     void getByPropertyLikeSuccess() {
         List<User> retrievedUsers = genericDao.getByPropertyLike("lastname","Sq");
         assertEquals(1, retrievedUsers.size());
+    }
+
+    /**
+     * Verifies get list of plants for user success
+     */
+    @Test
+    void getPlantsByUserSuccess() {
+        User retrievedUser = (User)genericDao.getById(2);
+        assertEquals(1,retrievedUser.getUserplants().size());
     }
 }

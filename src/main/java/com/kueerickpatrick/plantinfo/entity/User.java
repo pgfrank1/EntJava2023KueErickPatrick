@@ -23,7 +23,8 @@ public class User {
     @Column(name = "username", length = 50)
     private String username;
 
-    @OneToMany(mappedBy = "userid")
+    @OneToMany(mappedBy = "userid", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Userplant> userplants = new LinkedHashSet<>();
 
     public User() {}

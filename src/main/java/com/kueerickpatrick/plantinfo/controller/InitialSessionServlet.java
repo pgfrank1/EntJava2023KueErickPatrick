@@ -1,7 +1,7 @@
 package com.kueerickpatrick.plantinfo.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kueerickpatrick.plantinfo.entity.plantPOJO.PlantDetailList;
+import com.kueerickpatrick.plantinfo.entity.plantObjects.PlantDetailList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

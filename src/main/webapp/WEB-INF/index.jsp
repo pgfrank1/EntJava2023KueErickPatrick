@@ -20,15 +20,24 @@
     <%-- content --%>
     <div class="container d-flex justify-content-center">
         <div class="text-dark">
-            <h3>Quick search</h3>
             <%-- search bar --%>
-            <input type="text" class="form-control" placeholder="look up a plant">
-             <%-- search bar help text --%>
-            <div class="form-text">You can try: common name or scientific name!</div>
+            <form>
+                <%-- search bar title --%>
+                <h3>Quick search</h3>
+                <%-- search bar --%>
+                <input type="text" class="form-control" placeholder="look up a plant">
+                <%-- search bar help text --%>
+                <div class="form-text">You can try: common name or scientific name!</div>
+                <%-- enter and clear button container --%>
+                <div class="container justify-content-end d-flex p-0">
+                    <button class="btn btn-light border-black me-3" type="reset">clear</button>
+                    <button class="btn btn-primary border-black" type="submit">search</button>
+                </div>
+            </form>
             <%-- plant of the day card --%>
             <div class="rounded bg-white mt-5">
                 <%-- potd header --%>
-                <h1 class="text-center">potd</h1>
+                <h1 class="text-center pt-4">potd</h1>
                  <%-- potd subheader --%>
                 <h2 class="text-center text-body-tertiary">(plant of the day)</h2>
                 <%-- image container--%>
@@ -36,11 +45,11 @@
                      <%-- row to create seperate sections --%>
                      <div class="row">
                          <%-- first column of row (image) --%>
-                         <div class="col">
+                         <div class="col-md-4">
                              <img class="img-fluid" src="${pageContext.request.contextPath}/images/mini-cactus-example.png" alt="a small cactus in a pot">
                          </div>
                          <%-- second column of row (description) --%>
-                         <div class="col p-4">
+                         <div class="col-md-8 p-4">
                              <%-- potd name --%>
                              <h1 class="m-0">example</h1>
                              <%-- scientific name --%>

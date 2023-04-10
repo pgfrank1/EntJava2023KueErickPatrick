@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="EntJava2023KueErickPatrick.war">
+    <root id="archive" name="untitled.war">
       <element id="artifact" artifact-name="EntJava2023KueErickPatrick:war exploded" />
     </root>
   </artifact>

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="EntJava2023KueErickPatrick:war exploded">
-    <output-path>$PROJECT_DIR$/target/EntJava2023KueErickPatrick</output-path>
+    <output-path>$PROJECT_DIR$/target/untitled</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -67,6 +67,11 @@
           <element id="library" level="project" name="Maven: org.glassfish.hk2.external:aopalliance-repackaged:2.6.1" />
           <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2-api:2.6.1" />
           <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2-utils:2.6.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.containers:jersey-container-servlet:2.29.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.containers:jersey-container-servlet-core:2.29.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-server:2.29.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.media:jersey-media-jaxb:2.29.1" />
+          <element id="library" level="project" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.0" />
@@ -76,7 +81,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/EntJava2023KueErickPatrick/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/untitled/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="EntJava2023KueErickPatrick/web/Web" />
     </root>

@@ -6,21 +6,24 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Objects;
 
+import static javax.persistence.AccessType.PROPERTY;
+
 @Entity
 @Table(name = "userplant")
 public class Userplant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @Access(value = PROPERTY)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "userid")
     private User userid;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "plantid")
     private Plant plantid;
 

@@ -8,6 +8,9 @@ import java.util.Objects;
 
 import static javax.persistence.AccessType.PROPERTY;
 
+/**
+ * The type Userplant.
+ */
 @Entity
 @Table(name = "userplant")
 public class Userplant {
@@ -27,35 +30,74 @@ public class Userplant {
     @JoinColumn(name = "plantid")
     private Plant plantid;
 
+    /**
+     * Instantiates a new Userplant.
+     */
     public Userplant() {
 
     }
 
+    /**
+     * Instantiates a new Userplant.
+     *
+     * @param userid  the userid
+     * @param plantid the plantid
+     */
     public Userplant(User userid, Plant plantid) {
         this.userid = userid;
         this.plantid = plantid;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * Gets userid.
+     *
+     * @return the userid
+     */
     public User getUserid() {
         return userid;
     }
 
+    /**
+     * Sets userid.
+     *
+     * @param userid the userid
+     */
     public void setUserid(User userid) {
         this.userid = userid;
     }
 
+    /**
+     * Gets plantid.
+     *
+     * @return the plantid
+     */
     public Plant getPlantid() {
         return plantid;
     }
 
+    /**
+     * Sets plantid.
+     *
+     * @param plantid the plantid
+     */
     public void setPlantid(Plant plantid) {
         this.plantid = plantid;
     }

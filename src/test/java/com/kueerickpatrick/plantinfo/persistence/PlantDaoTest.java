@@ -43,6 +43,9 @@ public class PlantDaoTest {
         assertEquals(2,plants.size());
     }
 
+    /**
+     * Verifies get plant by ID success
+     */
     @Test
     void getByIdSuccess(){
         Plant retreivedPlant = (Plant)plantDao.getById(2);

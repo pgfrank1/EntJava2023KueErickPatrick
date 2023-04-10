@@ -5,6 +5,9 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * The type Plant.
+ */
 @Entity(name = "Plant")
 @Table(name = "plant")
 public class Plant {
@@ -20,33 +23,71 @@ public class Plant {
             orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Userplant> userplants = new LinkedHashSet<>();
 
+    /**
+     * Instantiates a new Plant.
+     */
     public Plant() {
     }
 
+    /**
+     * Instantiates a new Plant.
+     *
+     * @param perenualid the perenualid
+     */
     public Plant(Integer perenualid) {
         this.perenualid = perenualid;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * Gets perenualid.
+     *
+     * @return the perenualid
+     */
     public Integer getPerenualid() {
         return perenualid;
     }
 
+    /**
+     * Sets perenualid.
+     *
+     * @param perenualid the perenualid
+     */
     public void setPerenualid(Integer perenualid) {
         this.perenualid = perenualid;
     }
 
+    /**
+     * Gets userplants.
+     *
+     * @return the userplants
+     */
     public Set<Userplant> getUserplants() {
         return userplants;
     }
 
+    /**
+     * Sets userplants.
+     *
+     * @param userplants the userplants
+     */
     public void setUserplants(Set<Userplant> userplants) {
         this.userplants = userplants;
     }

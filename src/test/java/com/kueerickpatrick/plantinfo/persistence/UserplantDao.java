@@ -9,12 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The type Userplant dao test
@@ -66,7 +61,6 @@ public class UserplantDao {
      * Verifies add plant to user success
      */
     @Test
-    @Transactional
     void addPlantToUserSuccess() {
 
         User retrievedUser = (User)userDao.getById(2);
@@ -79,8 +73,28 @@ public class UserplantDao {
 
         int i = userplantDao.insert(newUserplant);
 
-        Userplant retrievedPlant = (Userplant)userplantDao.getById(i);
-        assertEquals(i, retrievedPlant);
+        User actualUserID = (User) userDao.getById(2);
+        assertEquals(2,actualUserID.getUserplants().size());
     }
+
+    /**
+     * Verifies delete plant from user success
+     */
+    @Test
+    void deletePlantFromUserSuccess() {
+        User user = (User)userDao.getById(2);
+        Plant plant = (Plant)plantDao.getById(1);
+
+        //TODO: figure out how to get ID from user and plant parameters
+        Userplant userplant = new Userplant(user,plant);
+        logger.info("userplant id: " + userplant.getUserid()) ;
+
+
+        Userplant getById = (Userplant)userplantDao.getById(3);
+        userplantDao.delete(getById);
+
+        assertNull(userplantDao.getById(3));
+    }
+
 
 }

@@ -7,9 +7,9 @@ DROP SCHEMA IF EXISTS test_PlantInfo;
 CREATE SCHEMA test_PlantInfo;
 USE test_PlantInfo;
 CREATE TABLE plant (
-                       perenualid int NULL DEFAULT null,
-                       id int  NOT NULL AUTO_INCREMENT,
-                       CONSTRAINT plant_pk PRIMARY KEY (id)
+                    id int  NOT NULL AUTO_INCREMENT,
+                    perenualid int NULL DEFAULT null,
+                    CONSTRAINT plant_pk PRIMARY KEY (id)
 ) AUTO_INCREMENT 3 ENGINE InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 -- Table: user
@@ -51,3 +51,4 @@ ALTER TABLE userplant ADD CONSTRAINT userplant_user_fk FOREIGN KEY userplant_use
 
 INSERT INTO user (id, firstname, lastname, username) VALUES (1,'Kue','Xiong','kxiong'),(2,'Spongebob','Square Pants','ssquarepants');
 INSERT INTO plant (id, perenualid) VALUES (1,1),(2,3);
+INSERT INTO userplant (id, userid, plantid) VALUES (1, 1, 2),(2, 1, 1),(3, 2, 1);

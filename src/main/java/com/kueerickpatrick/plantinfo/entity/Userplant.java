@@ -4,6 +4,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "userplant")
 public class Userplant {
@@ -20,8 +22,16 @@ public class Userplant {
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "plantid")
-
     private Plant plantid;
+
+    public Userplant() {
+
+    }
+
+    public Userplant(User userid, Plant plantid) {
+        this.userid = userid;
+        this.plantid = plantid;
+    }
 
     public Integer getId() {
         return id;
@@ -47,4 +57,18 @@ public class Userplant {
         this.plantid = plantid;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Userplant userplant = (Userplant) o;
+        return Objects.equals(id, userplant.id) &&
+                Objects.equals(userid, userplant.userid) &&
+                Objects.equals(plantid, userplant.plantid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userid, plantid);
+    }
 }

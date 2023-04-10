@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * The type Userplant dao test
  */
-public class UserplantDao {
+public class UserplantDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 

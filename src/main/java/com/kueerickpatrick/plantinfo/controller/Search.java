@@ -65,6 +65,7 @@ public class Search extends HttpServlet {
             List<DataItem> results = null;
             // get query from form submission
             String query = request.getParameter("query");
+            request.setAttribute("userQuery", query);
             logger.debug("User query: " + query);
             // call API
             try {
@@ -74,7 +75,7 @@ public class Search extends HttpServlet {
             }
             // set request attribute
             request.setAttribute("results", foundPlants);
-            logger.debug("Current request attribute value for result: " + request.getAttribute("result"));
+            logger.debug("Current request attribute value for result: " + request.getAttribute("results"));
             // forward results back to search for display
             String url = "/WEB-INF/search.jsp";
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(url);

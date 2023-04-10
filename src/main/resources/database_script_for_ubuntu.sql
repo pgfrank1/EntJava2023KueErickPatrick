@@ -3,9 +3,9 @@
 
 -- tables
 -- Table: plant
-DROP SCHEMA IF EXISTS test_PlantInfo;
-CREATE SCHEMA test_PlantInfo;
-USE test_PlantInfo;
+DROP SCHEMA IF EXISTS PlantInfo;
+CREATE SCHEMA PlantInfo;
+USE PlantInfo;
 CREATE TABLE plant (
                     id int  NOT NULL AUTO_INCREMENT,
                     perenualid int NULL DEFAULT null,

@@ -2,12 +2,14 @@ package com.kueerickpatrick.plantinfo.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity(name = "User")
 @Table(name = "user")
+@Access(AccessType.FIELD)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

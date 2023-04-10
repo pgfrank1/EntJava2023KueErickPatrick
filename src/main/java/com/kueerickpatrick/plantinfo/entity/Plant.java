@@ -16,7 +16,8 @@ public class Plant {
     @Column(name = "perenualid")
     private Integer perenualid;
 
-    @OneToMany(mappedBy = "plantid")
+    @OneToMany(mappedBy = "plantid",cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Userplant> userplants = new LinkedHashSet<>();
 
     public Plant() {

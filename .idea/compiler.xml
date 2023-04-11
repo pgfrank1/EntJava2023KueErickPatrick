@@ -9,8 +9,5 @@
         <module name="EntJava2023KueErickPatrick" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="EntJava2023KueErickPatrick" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

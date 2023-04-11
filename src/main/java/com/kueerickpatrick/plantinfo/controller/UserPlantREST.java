@@ -7,16 +7,15 @@ import com.kueerickpatrick.plantinfo.persistence.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Path("/plantinfo")
 public class UserPlantREST {
@@ -140,5 +139,26 @@ public class UserPlantREST {
         return Response.status(200).entity(output).build();
     }
 
+    @POST
+    @Produces("Text/HTML")
+    @Path("newuser/{firstName}/{lastName}/{userName}")
+    public Response addNewUser(@PathParam("firstName") String firstName,
+                               @PathParam("lastName") String lastName,
+                               @PathParam("userName") String userName) {
 
+        userDao = new GenericDao(User.class);
+        logger.info("First name: " + firstName + ", Last Name: " + lastName +  ", Username: " + userName);
+        User newUser = new User(firstName, lastName, userName);
+        int id = userDao.insert(newUser);
+
+        String output = null;
+        User expectedUser = (User)userDao.getById(id);
+        if (newUser.equals(expectedUser)) {
+            output = "The user was successfully added.";
+        } else {
+            output = "There was an error in adding user.";
+        }
+
+        return Response.status(200).entity(output).build();
+    }
 }

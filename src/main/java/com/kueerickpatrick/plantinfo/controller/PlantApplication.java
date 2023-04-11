@@ -20,7 +20,7 @@ public class PlantApplication extends Application {
     public Set<Class<?>> getClasses() {
         HashSet restClasses = new HashSet<Class<?>>();
         restClasses.add(PlantDataRetrieval.class);
-        restClasses.add(UserREST.class);
+        restClasses.add(UserPlantREST.class);
         return restClasses;
     }
 }

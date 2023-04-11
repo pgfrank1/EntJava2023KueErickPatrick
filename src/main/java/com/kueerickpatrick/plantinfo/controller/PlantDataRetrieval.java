@@ -75,14 +75,12 @@ public class PlantDataRetrieval implements PropertiesLoader {
         ArrayList<String> allQueriesUrl = buildRemainingSearchTerms(completedUrl, userSearchParameters);
 
         for (String individualQueries : allQueriesUrl) {
-            WebTarget targetPlantDetails = client.target(individualQueries.toString());
+            WebTarget targetPlantDetails = client.target(individualQueries);
             String apiResponse = targetPlantDetails.request(MediaType.APPLICATION_JSON).get(String.class);
             //Gets the API response and places it in a String
             ObjectMapper mapper = new ObjectMapper();
             PlantDetailList plantDetailList = mapper.readValue(apiResponse, PlantDetailList.class);
-            for (DataItem plantInfo : plantDetailList.getData()) {
-                foundPlants.add(plantInfo);
-            }
+            foundPlants.addAll(plantDetailList.getData());
         }
         logger.debug("Current found plants in JSON data: " + foundPlants.size());
     }
@@ -132,11 +130,9 @@ public class PlantDataRetrieval implements PropertiesLoader {
                     } else if (i == 1) {
                         builtUrl.append("&watering=").append(parameterToAdd);
                         logger.debug("Watering parameter found: Current URL is:" + builtUrl);
-                    } else if (i == 2) {
+                    } else {
                         builtUrl.append("&sunlight=").append(parameterToAdd);
                         logger.debug("Sunlight parameter found: Current URL is:" + builtUrl);
-                    } else {
-                        logger.error("I have no idea how you have gotten here but congratulations!");
                     }
                 }
                 userSearchParameters.remove(parameterToAdd);

@@ -40,7 +40,7 @@ public class PlantDataRetrieval implements PropertiesLoader {
     @Context
     ServletContext context;
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private static List<DataItem> foundPlants;
+    private static List<DataItem> foundPlants = new ArrayList<>();
 
 
     /**
@@ -72,13 +72,18 @@ public class PlantDataRetrieval implements PropertiesLoader {
         ArrayList<String> userSearchParameters = new ArrayList<>(Arrays.asList(searchTerm.split("\\s+")));
         //Creates the completed url to query the Perenual API
         StringBuilder completedUrl = buildPerenualUrl(userSearchParameters);
-        WebTarget targetPlantDetails = client.target(completedUrl.toString());
-        //Gets the API response and places it in a String
-        String apiResponse = targetPlantDetails.request(MediaType.APPLICATION_JSON).get(String.class);
-        ObjectMapper mapper = new ObjectMapper();
-        PlantDetailList plantDetailList = mapper.readValue(apiResponse, PlantDetailList.class);
-        //Places the found plants from the Perenual API in a List
-        foundPlants = plantDetailList.getData();
+        ArrayList<String> allQueriesUrl = buildRemainingSearchTerms(completedUrl, userSearchParameters);
+
+        for (String individualQueries : allQueriesUrl) {
+            WebTarget targetPlantDetails = client.target(individualQueries.toString());
+            String apiResponse = targetPlantDetails.request(MediaType.APPLICATION_JSON).get(String.class);
+            //Gets the API response and places it in a String
+            ObjectMapper mapper = new ObjectMapper();
+            PlantDetailList plantDetailList = mapper.readValue(apiResponse, PlantDetailList.class);
+            for (DataItem plantInfo : plantDetailList.getData()) {
+                foundPlants.add(plantInfo);
+            }
+        }
         logger.debug("Current found plants in JSON data: " + foundPlants.size());
     }
 
@@ -137,7 +142,16 @@ public class PlantDataRetrieval implements PropertiesLoader {
                 userSearchParameters.remove(parameterToAdd);
             }
         }
-
         return builtUrl;
+    }
+
+    public ArrayList<String> buildRemainingSearchTerms(StringBuilder completedUrl, ArrayList<String> userSearchParameters) {
+        ArrayList<String> allPossibleQueries = new ArrayList<>();
+        for (String userSearchTerm: userSearchParameters) {
+            String newUrl = completedUrl.toString();
+            newUrl += "&q=" + userSearchTerm;
+            allPossibleQueries.add(newUrl);
+        }
+        return allPossibleQueries;
     }
 }

@@ -18,22 +18,10 @@
     <%-- nav will go here --%>
     <%@include file="nav.jsp"%>
     <%-- content --%>
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center p-0">
         <div class="text-dark">
-            <%-- search bar --%>
-            <form>
-                <%-- search bar title --%>
-                <h3>Quick search</h3>
-                <%-- search bar --%>
-                <input type="text" class="form-control" placeholder="look up a plant">
-                <%-- search bar help text --%>
-                <div class="form-text">You can try: common name or scientific name!</div>
-                <%-- enter and clear button container --%>
-                <div class="container justify-content-end d-flex p-0">
-                    <button class="btn btn-light border-black me-3" type="reset">clear</button>
-                    <button class="btn btn-primary border-black" type="submit">search</button>
-                </div>
-            </form>
+            <%-- search inclusion --%>
+            <%@include file="search-component.jsp"%>
             <%-- plant of the day card --%>
             <div class="rounded bg-white mt-5">
                 <%-- potd header --%>

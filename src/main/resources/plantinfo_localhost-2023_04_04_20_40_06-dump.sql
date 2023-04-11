@@ -3,9 +3,17 @@
 -- Host: 127.0.0.1    Database: plantinfo
 -- ------------------------------------------------------
 -- Server version	8.0.31
-DROP SCHEMA IF EXISTS PlantInfo;
-CREATE SCHEMA PlantInfo;
-USE PlantInfo;
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `plant`
@@ -16,9 +24,9 @@ DROP TABLE IF EXISTS `plant`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `plant` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `informalname` varchar(100) DEFAULT NULL,
+  `perenualid` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -27,7 +35,7 @@ CREATE TABLE `plant` (
 
 LOCK TABLES `plant` WRITE;
 /*!40000 ALTER TABLE `plant` DISABLE KEYS */;
-INSERT INTO `plant` VALUES (1,'Peace Lily'),(2,'Mini Monstera');
+INSERT INTO `plant` VALUES (3,1),(4,5);
 /*!40000 ALTER TABLE `plant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +91,6 @@ CREATE TABLE `userplant` (
 
 LOCK TABLES `userplant` WRITE;
 /*!40000 ALTER TABLE `userplant` DISABLE KEYS */;
-INSERT INTO `userplant` VALUES (1,1,1),(2,1,2),(3,2,2);
 /*!40000 ALTER TABLE `userplant` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -96,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-01 23:03:52
+-- Dump completed on 2023-04-04 20:40:07

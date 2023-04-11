@@ -32,6 +32,9 @@ public class DefaultImage{
 	@JsonProperty("medium_url")
 	private String mediumUrl;
 
+	@JsonProperty("image_id")
+	private int imageId;
+
 	@JsonProperty("license_url")
 	private String licenseUrl;
 
@@ -161,6 +164,14 @@ public class DefaultImage{
 		return mediumUrl;
 	}
 
+	public int getImageId() {
+		return imageId;
+	}
+
+	public void setImageId(int imageId) {
+		this.imageId = imageId;
+	}
+
 	/**
 	 * Set license url.
 	 *
@@ -180,17 +191,18 @@ public class DefaultImage{
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"DefaultImage{" + 
-			"license = '" + license + '\'' + 
-			",regular_url = '" + regularUrl + '\'' + 
-			",license_name = '" + licenseName + '\'' + 
-			",thumbnail = '" + thumbnail + '\'' + 
-			",small_url = '" + smallUrl + '\'' + 
-			",original_url = '" + originalUrl + '\'' + 
-			",medium_url = '" + mediumUrl + '\'' + 
-			",license_url = '" + licenseUrl + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return
+				"DefaultImage{" +
+						"license = '" + license + '\'' +
+						",regular_url = '" + regularUrl + '\'' +
+						",license_name = '" + licenseName + '\'' +
+						",thumbnail = '" + thumbnail + '\'' +
+						",small_url = '" + smallUrl + '\'' +
+						",original_url = '" + originalUrl + '\'' +
+						",medium_url = '" + mediumUrl + '\'' +
+						",image_id = '" + imageId + '\'' +
+						",license_url = '" + licenseUrl + '\'' +
+						"}";
+	}
 }

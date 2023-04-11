@@ -3,7 +3,6 @@ package com.kueerickpatrick.plantinfo.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.DataInput;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +14,6 @@ import javax.servlet.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import com.kueerickpatrick.plantinfo.entity.plantObjects.DataItem;
 

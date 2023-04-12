@@ -1,5 +1,9 @@
 <%--
-  Homepage for our project. Contains quick search bar, nav, and a random plant generator.
+  Created by IntelliJ IDEA.
+  User: student
+  Date: 4/3/23
+  Time: 12:00 PM
+  Plant details page.
   author: ereyes3
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,7 +11,7 @@
 <%-- head.jsp inclusion --%>
 <%@include file="head.jsp"%>
 <%-- set random plant --%>
-<c:set var="randomPlant" value='${requestScope["randomPlant"]}' />
+<c:set var="selectedPlant" value='${requestScope["selectedPlant"]}' />
 <body class="bg-custom-mint-green">
 
 <%-- main container --%>
@@ -22,21 +26,21 @@
             <%-- plant of the day card --%>
             <div class="rounded bg-white mt-5">
                 <%-- potd header --%>
-                <h1 class="text-center pt-4">Random Plant</h1>
+                <h1 class="text-center pt-4">Plant details</h1>
                 <%-- image container--%>
                  <div class="container">
                      <%-- row to create seperate sections --%>
                      <div class="row">
                          <%-- first column of row (image) --%>
                          <div class="col-md-4 ">
-                             <img class="img-fluid" src="${randomPlant.getDefaultImage().getSmallUrl()}">
+                             <img class="img-fluid" src="${selectedPlant.getDefaultImage().getSmallUrl()}">
                          </div>
                          <%-- second column of row (description) --%>
                          <div class="col-md-8 p-4">
                              <%-- potd name --%>
-                             <h1 class="m-0">${randomPlant.getCommonName()}</h1>
+                             <h1 class="m-0">${selectedPlant.getCommonName()}</h1>
                              <%-- scientific name --%>
-                             <h2 class="text-body-tertiary">${randomPlant.getScientificName()}</h2>
+                             <h2 class="text-body-tertiary">${selectedPlant.getScientificName()}</h2>
                              <%-- progress bars containers --%>
                              <div class="container p-0">
                                  <%-- water --%>
@@ -48,28 +52,28 @@
                                      <%-- progress bar --%>
                                      <%-- conditionals for watering possibilities --%>
                                      <c:choose>
-                                         <c:when test="${randomPlant.getWatering() == 'None'}">
+                                         <c:when test="${selectedPlant.getWatering() == 'None'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="water-level">
                                                      <div class="progress-bar bg-custom-sky-blue" style="width: 0%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getWatering() == 'Minimum'}">
+                                         <c:when test="${selectedPlant.getWatering() == 'Minimum'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="water-level">
                                                      <div class="progress-bar bg-custom-sky-blue" style="width: 33%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getWatering() == 'Average'}">
+                                         <c:when test="${selectedPlant.getWatering() == 'Average'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="water-level">
                                                      <div class="progress-bar bg-custom-sky-blue" style="width: 66%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getWatering() == 'Frequent'}">
+                                         <c:when test="${selectedPlant.getWatering() == 'Frequent'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="water-level">
                                                      <div class="progress-bar bg-custom-sky-blue" style="width: 100%"></div>
@@ -87,56 +91,56 @@
                                      <%-- progress bar --%>
                                      <%-- conditionals for most sun possibilities --%>
                                      <c:choose>
-                                         <c:when test="${randomPlant.getSunlight() == '[Full shade]'}">
+                                         <c:when test="${selectedPlant.getSunlight() == '[Full shade]'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="sun-level">
                                                      <div class="progress-bar bg-custom-light-gold" style="width: 0%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getSunlight() == '[Part shade]'}">
+                                         <c:when test="${selectedPlant.getSunlight() == '[Part shade]'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="sun-level">
                                                      <div class="progress-bar bg-custom-light-gold" style="width: 33%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getSunlight() == '[Sun part shade]'}">
+                                         <c:when test="${selectedPlant.getSunlight() == '[Sun part shade]'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="sun-level">
                                                      <div class="progress-bar bg-custom-light-gold" style="width: 66%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getSunlight() == '[Full sun]'}">
+                                         <c:when test="${selectedPlant.getSunlight() == '[Full sun]'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="sun-level">
                                                      <div class="progress-bar bg-custom-light-gold" style="width: 100%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getSunlight() == '[full sun]'}">
+                                         <c:when test="${selectedPlant.getSunlight() == '[full sun]'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="sun-level">
                                                      <div class="progress-bar bg-custom-light-gold" style="width: 100%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getSunlight() == '[Full sun, part shade]'}">
+                                         <c:when test="${selectedPlant.getSunlight() == '[Full sun, part shade]'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="sun-level">
                                                      <div class="progress-bar bg-custom-light-gold" style="width: 50%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getSunlight() == '[full sun, part shade]'}">
+                                         <c:when test="${selectedPlant.getSunlight() == '[full sun, part shade]'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="sun-level">
                                                      <div class="progress-bar bg-custom-light-gold" style="width: 50%"></div>
                                                  </div>
                                              </div>
                                          </c:when>
-                                         <c:when test="${randomPlant.getSunlight() == '[Part shade, full shade]'}">
+                                         <c:when test="${selectedPlant.getSunlight() == '[Part shade, full shade]'}">
                                              <div class="col">
                                                  <div class="progress" role="progressbar" aria-label="sun-level">
                                                      <div class="progress-bar bg-custom-light-gold" style="width: 25%"></div>
@@ -156,11 +160,11 @@
                              <hr class="text-body-tertiary">
                              <%-- description --%>
                              <c:choose>
-                                 <c:when test="${empty randomPlant.getDescription()}">
+                                 <c:when test="${empty selectedPlant.getDescription()}">
                                      <p>Description not available :(</p>
                                  </c:when>
                                  <c:otherwise>
-                                     <p>${randomPlant.getDescription()}</p>
+                                     <p>${selectedPlant.getDescription()}</p>
                                  </c:otherwise>
                              </c:choose>
                          </div>

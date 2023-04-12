@@ -1,3 +1,7 @@
+<%--
+    Modularized search component.
+    author: ereyes3
+--%>
 <%-- search container --%>
 <div class="text-dark w-100">
     <%-- search bar title --%>

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.kueerickpatrick.plantinfo.entity.plantObjects.DataItem;
 import com.kueerickpatrick.plantinfo.entity.plantObjects.PlantDetailList;
+import com.kueerickpatrick.plantinfo.entity.plantObjects.PlantIndividualInfo;
 import com.kueerickpatrick.plantinfo.util.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +22,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * This class utilizes a RESTful API service to get the user's search terms and look through the data for any
@@ -44,7 +48,7 @@ public class PlantDataRetrieval implements PropertiesLoader {
 
 
     /**
-     * Gets plant filtered info from the user's search term.
+     * Gets plant filtered info from the user's search terms.
      *
      * @param searchTerm the user search term
      * @return the plant filtered info
@@ -58,6 +62,37 @@ public class PlantDataRetrieval implements PropertiesLoader {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         String output = mapper.writeValueAsString(foundPlants);
         return Response.status(200).entity(output).build();
+    }
+
+    /**
+     * Gets plant info by id.
+     *
+     * @param enteredId the entered id
+     * @return the plant info in JSON format
+     * @throws JsonProcessingException the json processing exception
+     */
+    @GET
+    @Path("/id/{enteredId}")
+    public Response getPlantInfoById(@PathParam("enteredId") String enteredId) throws JsonProcessingException {
+        String plantIndividualInfo = getPlantDetailsById(Integer.parseInt(enteredId));
+        ObjectMapper mapper = new ObjectMapper();
+        PlantIndividualInfo mappedPlantIndividualInfo = mapper.readValue(plantIndividualInfo, PlantIndividualInfo.class);
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        String output = mapper.writeValueAsString(mappedPlantIndividualInfo);
+        return Response.status(200).entity(output).build();
+    }
+
+    /**
+     * Creates the URL with the entered ID, and retrieves the data from the Perenual API
+     *
+     * @param enteredId the entered id to search for
+     * @return Json data in String format
+     */
+    private String getPlantDetailsById(int enteredId) {
+        Client client = ClientBuilder.newClient();
+        String completedIdUrl = (String) context.getAttribute("plantDetailsUrl") + enteredId + "?" + context.getAttribute("apiKey");
+        WebTarget targetPlantDetails = client.target(completedIdUrl);
+        return targetPlantDetails.request(MediaType.APPLICATION_JSON).get(String.class);
     }
 
     /**
@@ -93,9 +128,6 @@ public class PlantDataRetrieval implements PropertiesLoader {
      * @param userSearchParameters the user search parameters
      * @return the string builder of the url API query
      */
-    //TODO: Add the parameter required to search the database for a plant name
-    //TODO: Remove any other existing user parameters to hopefully get a single plant name remaining
-    //TODO: Maybe use the remaining terms as individual q= parameters for the API?
     public StringBuilder buildPerenualUrl(ArrayList<String> userSearchParameters) {
         // Prepares the beginning of the URL
         StringBuilder builtUrl = new StringBuilder((String) context.getAttribute("plantListSearchUrl") + context.getAttribute("apiKey"));
@@ -141,9 +173,16 @@ public class PlantDataRetrieval implements PropertiesLoader {
         return builtUrl;
     }
 
+    /**
+     * Build remaining search terms array list.
+     *
+     * @param completedUrl         the completed url
+     * @param userSearchParameters the user search parameters
+     * @return the array list
+     */
     public ArrayList<String> buildRemainingSearchTerms(StringBuilder completedUrl, ArrayList<String> userSearchParameters) {
         ArrayList<String> allPossibleQueries = new ArrayList<>();
-        for (String userSearchTerm: userSearchParameters) {
+        for (String userSearchTerm : userSearchParameters) {
             String newUrl = completedUrl.toString();
             newUrl += "&q=" + userSearchTerm;
             allPossibleQueries.add(newUrl);

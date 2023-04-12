@@ -115,6 +115,9 @@ public class PlantDataRetrieval implements PropertiesLoader {
             //Gets the API response and places it in a String
             ObjectMapper mapper = new ObjectMapper();
             PlantDetailList plantDetailList = mapper.readValue(apiResponse, PlantDetailList.class);
+            // clear results
+            foundPlants.clear();
+            // add new results
             foundPlants.addAll(plantDetailList.getData());
         }
         logger.debug("Current found plants in JSON data: " + foundPlants.size());

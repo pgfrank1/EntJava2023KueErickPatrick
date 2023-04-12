@@ -43,7 +43,7 @@
                             <c:forEach items="${plantList}" var="plant">
                             <tr>
                                 <td>${plant.getKey()}</td>
-                                <td>${plant.getValue()}</td>
+                                <td>${plant.getValue().getCommonName()}</td>
                             </tr>
                             </c:forEach>
                         </tbody>

@@ -139,12 +139,13 @@ public class UserPlantREST {
         return Response.status(200).entity(output).build();
     }
 
+    // TODO: Need to test
     @POST
     @Produces("Text/HTML")
     @Path("newuser/{firstName}/{lastName}/{userName}")
     public Response addNewUser(@PathParam("firstName") String firstName,
                                @PathParam("lastName") String lastName,
-                               @PathParam("userName") String userName) {
+                               @PathParam("userName") String userName) throws IOException{
 
         userDao = new GenericDao(User.class);
         logger.info("First name: " + firstName + ", Last Name: " + lastName +  ", Username: " + userName);

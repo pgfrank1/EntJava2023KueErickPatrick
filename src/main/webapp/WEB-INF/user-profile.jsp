@@ -30,7 +30,7 @@
                     <div class="col p-0 mb-2">
                         <h3>There's never a wrong time to stop and smell the flowers, ${user.getFirstname()}</h3>
                     </div>
-                    <h3 class="p-0">Your plants:</h3>
+                    <h3 class="p-0">Your garden:</h3>
                     <%-- user's plants table --%>
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -43,7 +43,7 @@
                             <c:forEach items="${plantList}" var="plant">
                             <tr>
                                 <td>${plant.getKey()}</td>
-                                <td>${plant.getValue().getCommonName()}</td>
+                                <td><a href="http://localhost:8080/EntJava2023KueErickPatrick_war/plantPage?idToSearch=${plant.getValue().getId()}">${plant.getValue().getCommonName()}</a></td>
                             </tr>
                             </c:forEach>
                         </tbody>

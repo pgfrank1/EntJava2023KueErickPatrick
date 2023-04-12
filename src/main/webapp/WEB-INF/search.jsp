@@ -3,7 +3,8 @@
   User: reyesmac
   Date: 4/6/23
   Time: 8:24 PM
-  To change this template use File | Settings | File Templates.
+  Seach page.
+  author: ereyes.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -37,15 +38,17 @@
                     <%-- for each item in results, create column --%>
                     <c:forEach items="${results}" var="plant">
                         <%-- column --%>
-                        <div class="col p-0">
-                            <%-- card container --%>
-                            <div class="bg-white rounded text-dark m-1 overflow-auto">
-                                <%-- image --%>
-                                <img class="img-fluid rounded p-2" src="${plant.getDefaultImage().getThumbnail()}">
-                                <%-- name --%>
-                                <p class="p-0">${plant.getCommonName()}</p>
+                        <a href="http://localhost:8080/EntJava2023KueErickPatrick_war/plantPage?idToSearch=${plant.getId()}">
+                            <div class="col p-0">
+                                <%-- card container --%>
+                                <div class="bg-white rounded text-dark m-1 overflow-auto">
+                                    <%-- image --%>
+                                    <img class="img-fluid rounded p-2" src="${plant.getDefaultImage().getThumbnail()}">
+                                    <%-- name --%>
+                                    <p class="p-0">${plant.getCommonName()}</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </c:forEach>
                 </div>
             </div>

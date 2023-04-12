@@ -3,11 +3,7 @@ package com.kueerickpatrick.plantinfo.entity.plantObjects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The type Default image array that comes with the plant detail information
- *
- * @author pgfrank
- * @version 1.0
- * @since 1.0
+ * The type Default image for individual plant images.
  */
 public class DefaultImage{
 
@@ -180,17 +176,17 @@ public class DefaultImage{
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"DefaultImage{" + 
-			"license = '" + license + '\'' + 
-			",regular_url = '" + regularUrl + '\'' + 
-			",license_name = '" + licenseName + '\'' + 
-			",thumbnail = '" + thumbnail + '\'' + 
-			",small_url = '" + smallUrl + '\'' + 
-			",original_url = '" + originalUrl + '\'' + 
-			",medium_url = '" + mediumUrl + '\'' + 
-			",license_url = '" + licenseUrl + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return
+				"DefaultImage{" +
+						"license = '" + license + '\'' +
+						",regular_url = '" + regularUrl + '\'' +
+						",license_name = '" + licenseName + '\'' +
+						",thumbnail = '" + thumbnail + '\'' +
+						",small_url = '" + smallUrl + '\'' +
+						",original_url = '" + originalUrl + '\'' +
+						",medium_url = '" + mediumUrl + '\'' +
+						",license_url = '" + licenseUrl + '\'' +
+						"}";
+	}
 }

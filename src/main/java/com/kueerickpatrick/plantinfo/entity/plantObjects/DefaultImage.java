@@ -3,11 +3,7 @@ package com.kueerickpatrick.plantinfo.entity.plantObjects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The type Default image array that comes with the plant detail information
- *
- * @author pgfrank
- * @version 1.0
- * @since 1.0
+ * The type Default image for individual plant images.
  */
 public class DefaultImage{
 
@@ -31,9 +27,6 @@ public class DefaultImage{
 
 	@JsonProperty("medium_url")
 	private String mediumUrl;
-
-	@JsonProperty("image_id")
-	private int imageId;
 
 	@JsonProperty("license_url")
 	private String licenseUrl;
@@ -164,14 +157,6 @@ public class DefaultImage{
 		return mediumUrl;
 	}
 
-	public int getImageId() {
-		return imageId;
-	}
-
-	public void setImageId(int imageId) {
-		this.imageId = imageId;
-	}
-
 	/**
 	 * Set license url.
 	 *
@@ -201,7 +186,6 @@ public class DefaultImage{
 						",small_url = '" + smallUrl + '\'' +
 						",original_url = '" + originalUrl + '\'' +
 						",medium_url = '" + mediumUrl + '\'' +
-						",image_id = '" + imageId + '\'' +
 						",license_url = '" + licenseUrl + '\'' +
 						"}";
 	}

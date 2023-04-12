@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The type Hardiness.
- *
- * @author pgfrank
- * @version 1.0
- * @since 1.0
  */
 public class Hardiness{
 
@@ -54,11 +50,11 @@ public class Hardiness{
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"Hardiness{" + 
-			"min = '" + min + '\'' + 
-			",max = '" + max + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return
+				"Hardiness{" +
+						"min = '" + min + '\'' +
+						",max = '" + max + '\'' +
+						"}";
+	}
 }

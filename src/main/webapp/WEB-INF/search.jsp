@@ -3,7 +3,8 @@
   User: reyesmac
   Date: 4/6/23
   Time: 8:24 PM
-  To change this template use File | Settings | File Templates.
+  Seach page.
+  author: ereyes.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,37 +13,45 @@
 <%@include file="head.jsp"%>
 <%-- gets results (if any) from request scope --%>
 <c:set var="results" value='${requestScope["results"]}' />
+<%-- get user query --%>
+<c:set var="userQuery" value='${requestScope["userQuery"]}' />
 <body class="bg-custom-mint-green">
 
 <%-- main container --%>
 <div class="container mt-4">
-  <%-- nav will go here --%>
+  <%-- nav inclusion --%>
   <%@include file="nav.jsp"%>
   <%-- content --%>
-  <div class="container">
-    <%-- search container --%>
-    <div class="text-dark w-100">
-      <%-- search bar title --%>
-      <h3>Detailed search</h3>
-      <%-- search bar --%>
-      <form id="apiSearch" method="POST" action="search">
-          <%-- text input --%>
-          <input type="text" class="form-control" name="query" placeholder="look up a plant">
-          <%-- enter and clear button container --%>
-          <div class="container mt-3 justify-content-end d-flex p-0">
-              <button class="btn btn-light border-black me-3" type="reset">clear</button>
-              <button class="btn btn-primary border-black" type="submit" value="beginSearch">search</button>
-          </div>
-      </form>
-    </div>
+  <div class="container p-0">
+    <%-- search bar inclusion --%>
+    <%@include file="search-component.jsp"%>
+    <%-- if search results is not empty --%>
     <c:if test="${not empty results}">
-        <%-- results container --%>
+        <%-- results main container --%>
         <div>
+            <%-- results header --%>
             <h1>Results:</h1>
-            <c:forEach items="${results}" var="plant">
-                <p>${plant.getCommonName()}</p>
-                <img class="img-fluid" src="${plant.getDefaultImage().getThumbnail()}">
-            </c:forEach>
+            <%-- results grid--%>
+            <div class="container p-0 text-center ">
+                <%-- row --%>
+                <div class="row justify-content-center justify-content-md-evenly row-cols-auto">
+                    <%-- for each item in results, create column --%>
+                    <c:forEach items="${results}" var="plant">
+                        <%-- column --%>
+                        <a href="http://localhost:8080/EntJava2023KueErickPatrick_war/plantPage?idToSearch=${plant.getId()}">
+                            <div class="col p-0">
+                                <%-- card container --%>
+                                <div class="bg-white rounded text-dark m-1 overflow-auto">
+                                    <%-- image --%>
+                                    <img class="img-fluid rounded p-2" src="${plant.getDefaultImage().getThumbnail()}">
+                                    <%-- name --%>
+                                    <p class="p-0">${plant.getCommonName()}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </c:forEach>
+                </div>
+            </div>
         </div>
     </c:if>
   </div>

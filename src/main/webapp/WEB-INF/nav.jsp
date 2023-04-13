@@ -3,10 +3,11 @@
   User: reyesmac
   Date: 4/4/23
   Time: 8:17 PM
-  To change this template use File | Settings | File Templates.
+  Modularized navigation.
+  author: ereyes3
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<nav class="navbar navbar-expand-lg mb-5 bg-white rounded shadow">
+<nav class="navbar navbar-expand-lg mt-2 mb-5 bg-white rounded shadow sticky-top">
   <div class="container-fluid">
     <%-- logo --%>
     <img src="${pageContext.request.contextPath}/images/pixel-plant.png" class="plant-logo-sizing">
@@ -22,6 +23,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${pageContext.request.contextPath}/search">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${pageContext.request.contextPath}/restfulDocs">API Documentation</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>

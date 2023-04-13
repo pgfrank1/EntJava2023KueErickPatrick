@@ -1,14 +1,11 @@
 package com.kueerickpatrick.plantinfo.entity.plantObjects;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 /**
  * The type Plant individual info.
- *
- * @author pgfrank
- * @version 1.0
- * @since 1.0
  */
 public class PlantIndividualInfo{
 
@@ -64,7 +61,7 @@ public class PlantIndividualInfo{
 	private String endangeredLevel;
 
 	@JsonProperty("pest_susceptibility")
-	private String pestSusceptibility;
+	private List<String> pestSusceptibility;
 
 	@JsonProperty("edible_fruit_taste_profile")
 	private String edibleFruitTasteProfile;
@@ -79,7 +76,7 @@ public class PlantIndividualInfo{
 	private List<String> scientificName;
 
 	@JsonProperty("poisonous_to_humans")
-	private String poisonousToHumans;
+	private int poisonousToHumans;
 
 	@JsonProperty("leaf_nutritional_value")
 	private String leafNutritionalValue;
@@ -103,7 +100,7 @@ public class PlantIndividualInfo{
 	private String edibleLeafTasteProfile;
 
 	@JsonProperty("flowering_season")
-	private String floweringSeason;
+	private Object floweringSeason;
 
 	@JsonProperty("origin")
 	private List<String> origin;
@@ -121,13 +118,13 @@ public class PlantIndividualInfo{
 	private String description;
 
 	@JsonProperty("soil")
-	private List<Object> soil;
+	private List<String> soil;
 
 	@JsonProperty("harvest_method")
 	private String harvestMethod;
 
 	@JsonProperty("medicinal")
-	private String medicinal;
+	private boolean medicinal;
 
 	@JsonProperty("cycle")
 	private String cycle;
@@ -154,7 +151,7 @@ public class PlantIndividualInfo{
 	private boolean leaf;
 
 	@JsonProperty("fruiting_season")
-	private String fruitingSeason;
+	private Object fruitingSeason;
 
 	@JsonProperty("hardiness")
 	private Hardiness hardiness;
@@ -181,7 +178,7 @@ public class PlantIndividualInfo{
 	private String pestSusceptibilityApi;
 
 	@JsonProperty("poisonous_to_pets")
-	private String poisonousToPets;
+	private int poisonousToPets;
 
 	@JsonProperty("care_level")
 	private String careLevel;
@@ -193,10 +190,10 @@ public class PlantIndividualInfo{
 	private boolean edibleLeaf;
 
 	@JsonProperty("family")
-	private Object family;
+	private String family;
 
 	@JsonProperty("maintenance")
-	private Object maintenance;
+	private String maintenance;
 
 	/**
 	 * Set medicinal use.
@@ -505,21 +502,21 @@ public class PlantIndividualInfo{
 	}
 
 	/**
+	 * Get pest susceptibility list.
+	 *
+	 * @return the list
+	 */
+	public List<String> getPestSusceptibility() {
+		return pestSusceptibility;
+	}
+
+	/**
 	 * Set pest susceptibility.
 	 *
 	 * @param pestSusceptibility the pest susceptibility
 	 */
-	public void setPestSusceptibility(String pestSusceptibility){
+	public void setPestSusceptibility(List<String> pestSusceptibility) {
 		this.pestSusceptibility = pestSusceptibility;
-	}
-
-	/**
-	 * Get pest susceptibility string.
-	 *
-	 * @return the string
-	 */
-	public String getPestSusceptibility(){
-		return pestSusceptibility;
 	}
 
 	/**
@@ -595,21 +592,21 @@ public class PlantIndividualInfo{
 	}
 
 	/**
+	 * Get poisonous to humans int.
+	 *
+	 * @return the int
+	 */
+	public int getPoisonousToHumans(){
+		return poisonousToHumans;
+	}
+
+	/**
 	 * Set poisonous to humans.
 	 *
 	 * @param poisonousToHumans the poisonous to humans
 	 */
-	public void setPoisonousToHumans(String poisonousToHumans){
+	public void setPoisonousToHumans(int poisonousToHumans) {
 		this.poisonousToHumans = poisonousToHumans;
-	}
-
-	/**
-	 * Get poisonous to humans string.
-	 *
-	 * @return the string
-	 */
-	public String getPoisonousToHumans(){
-		return poisonousToHumans;
 	}
 
 	/**
@@ -734,8 +731,17 @@ public class PlantIndividualInfo{
 	 *
 	 * @return the string
 	 */
-	public String getEdibleLeafTasteProfile(){
+	public String getEdibleLeafTasteProfile() {
 		return edibleLeafTasteProfile;
+	}
+
+	/**
+	 * Get flowering season object.
+	 *
+	 * @return the object
+	 */
+	public Object getFloweringSeason(){
+		return floweringSeason;
 	}
 
 	/**
@@ -743,17 +749,8 @@ public class PlantIndividualInfo{
 	 *
 	 * @param floweringSeason the flowering season
 	 */
-	public void setFloweringSeason(String floweringSeason){
+	public void setFloweringSeason(Object floweringSeason) {
 		this.floweringSeason = floweringSeason;
-	}
-
-	/**
-	 * Get flowering season string.
-	 *
-	 * @return the string
-	 */
-	public String getFloweringSeason(){
-		return floweringSeason;
 	}
 
 	/**
@@ -842,17 +839,8 @@ public class PlantIndividualInfo{
 	 *
 	 * @return the string
 	 */
-	public String getDescription(){
+	public String getDescription() {
 		return description;
-	}
-
-	/**
-	 * Set soil.
-	 *
-	 * @param soil the soil
-	 */
-	public void setSoil(List<Object> soil){
-		this.soil = soil;
 	}
 
 	/**
@@ -860,8 +848,17 @@ public class PlantIndividualInfo{
 	 *
 	 * @return the list
 	 */
-	public List<Object> getSoil(){
+	public List<String> getSoil(){
 		return soil;
+	}
+
+	/**
+	 * Set soil.
+	 *
+	 * @param soil the soil
+	 */
+	public void setSoil(List<String> soil) {
+		this.soil = soil;
 	}
 
 	/**
@@ -878,8 +875,17 @@ public class PlantIndividualInfo{
 	 *
 	 * @return the string
 	 */
-	public String getHarvestMethod(){
+	public String getHarvestMethod() {
 		return harvestMethod;
+	}
+
+	/**
+	 * Is medicinal boolean.
+	 *
+	 * @return the boolean
+	 */
+	public boolean isMedicinal(){
+		return medicinal;
 	}
 
 	/**
@@ -887,17 +893,8 @@ public class PlantIndividualInfo{
 	 *
 	 * @param medicinal the medicinal
 	 */
-	public void setMedicinal(String medicinal){
+	public void setMedicinal(boolean medicinal) {
 		this.medicinal = medicinal;
-	}
-
-	/**
-	 * Get medicinal string.
-	 *
-	 * @return the string
-	 */
-	public String getMedicinal(){
-		return medicinal;
 	}
 
 	/**
@@ -1040,8 +1037,17 @@ public class PlantIndividualInfo{
 	 *
 	 * @return the boolean
 	 */
-	public boolean isLeaf(){
+	public boolean isLeaf() {
 		return leaf;
+	}
+
+	/**
+	 * Get fruiting season object.
+	 *
+	 * @return the object
+	 */
+	public Object getFruitingSeason(){
+		return fruitingSeason;
 	}
 
 	/**
@@ -1049,17 +1055,8 @@ public class PlantIndividualInfo{
 	 *
 	 * @param fruitingSeason the fruiting season
 	 */
-	public void setFruitingSeason(String fruitingSeason){
+	public void setFruitingSeason(Object fruitingSeason) {
 		this.fruitingSeason = fruitingSeason;
-	}
-
-	/**
-	 * Get fruiting season string.
-	 *
-	 * @return the string
-	 */
-	public String getFruitingSeason(){
-		return fruitingSeason;
 	}
 
 	/**
@@ -1202,8 +1199,17 @@ public class PlantIndividualInfo{
 	 *
 	 * @return the string
 	 */
-	public String getPestSusceptibilityApi(){
+	public String getPestSusceptibilityApi() {
 		return pestSusceptibilityApi;
+	}
+
+	/**
+	 * Get poisonous to pets int.
+	 *
+	 * @return the int
+	 */
+	public int getPoisonousToPets(){
+		return poisonousToPets;
 	}
 
 	/**
@@ -1211,17 +1217,8 @@ public class PlantIndividualInfo{
 	 *
 	 * @param poisonousToPets the poisonous to pets
 	 */
-	public void setPoisonousToPets(String poisonousToPets){
+	public void setPoisonousToPets(int poisonousToPets) {
 		this.poisonousToPets = poisonousToPets;
-	}
-
-	/**
-	 * Get poisonous to pets string.
-	 *
-	 * @return the string
-	 */
-	public String getPoisonousToPets(){
-		return poisonousToPets;
 	}
 
 	/**
@@ -1274,8 +1271,17 @@ public class PlantIndividualInfo{
 	 *
 	 * @return the boolean
 	 */
-	public boolean isEdibleLeaf(){
+	public boolean isEdibleLeaf() {
 		return edibleLeaf;
+	}
+
+	/**
+	 * Get family string.
+	 *
+	 * @return the string
+	 */
+	public String getFamily() {
+		return family;
 	}
 
 	/**
@@ -1283,17 +1289,17 @@ public class PlantIndividualInfo{
 	 *
 	 * @param family the family
 	 */
-	public void setFamily(Object family){
+	public void setFamily(String family) {
 		this.family = family;
 	}
 
 	/**
-	 * Get family object.
+	 * Get maintenance string.
 	 *
-	 * @return the object
+	 * @return the string
 	 */
-	public Object getFamily(){
-		return family;
+	public String getMaintenance() {
+		return maintenance;
 	}
 
 	/**
@@ -1301,85 +1307,76 @@ public class PlantIndividualInfo{
 	 *
 	 * @param maintenance the maintenance
 	 */
-	public void setMaintenance(Object maintenance){
+	public void setMaintenance(String maintenance) {
 		this.maintenance = maintenance;
 	}
 
-	/**
-	 * Get maintenance object.
-	 *
-	 * @return the object
-	 */
-	public Object getMaintenance(){
-		return maintenance;
-	}
-
 	@Override
- 	public String toString(){
-		return 
-			"PlantIndividualInfo{" + 
-			"medicinal_use = '" + medicinalUse + '\'' + 
-			",endangered = '" + endangered + '\'' + 
-			",type = '" + type + '\'' + 
-			",salt_tolerant = '" + saltTolerant + '\'' + 
-			",leaf_color = '" + leafColor + '\'' + 
-			",poison_effects_to_pets = '" + poisonEffectsToPets + '\'' + 
-			",growth_rate = '" + growthRate + '\'' + 
-			",problem = '" + problem + '\'' + 
-			",harvest_season = '" + harvestSeason + '\'' + 
-			",cones = '" + cones + '\'' + 
-			",rare = '" + rare + '\'' + 
-			",attracts = '" + attracts + '\'' + 
-			",poison_effects_to_humans = '" + poisonEffectsToHumans + '\'' + 
-			",id = '" + id + '\'' + 
-			",common_name = '" + commonName + '\'' + 
-			",cuisine_list = '" + cuisineList + '\'' + 
-			",endangered_level = '" + endangeredLevel + '\'' + 
-			",pest_susceptibility = '" + pestSusceptibility + '\'' + 
-			",edible_fruit_taste_profile = '" + edibleFruitTasteProfile + '\'' + 
-			",flowers = '" + flowers + '\'' + 
-			",invasive = '" + invasive + '\'' + 
-			",scientific_name = '" + scientificName + '\'' + 
-			",poisonous_to_humans = '" + poisonousToHumans + '\'' + 
-			",leaf_nutritional_value = '" + leafNutritionalValue + '\'' + 
-			",poison_to_humans_cure = '" + poisonToHumansCure + '\'' + 
-			",propagation = '" + propagation + '\'' + 
-			",indoor = '" + indoor + '\'' + 
-			",default_image = '" + defaultImage + '\'' + 
-			",thorny = '" + thorny + '\'' + 
-			",edible_leaf_taste_profile = '" + edibleLeafTasteProfile + '\'' + 
-			",flowering_season = '" + floweringSeason + '\'' + 
-			",origin = '" + origin + '\'' + 
-			",hardiness_location_image = '" + hardinessLocationImage + '\'' + 
-			",edible_fruit = '" + edibleFruit + '\'' + 
-			",fruit_nutritional_value = '" + fruitNutritionalValue + '\'' + 
-			",description = '" + description + '\'' + 
-			",soil = '" + soil + '\'' + 
-			",harvest_method = '" + harvestMethod + '\'' + 
-			",medicinal = '" + medicinal + '\'' + 
-			",cycle = '" + cycle + '\'' + 
-			",fruits = '" + fruits + '\'' + 
-			",poison_to_pets_cure = '" + poisonToPetsCure + '\'' + 
-			",rare_level = '" + rareLevel + '\'' + 
-			",dimension = '" + dimension + '\'' + 
-			",drought_tolerant = '" + droughtTolerant + '\'' + 
-			",cuisine = '" + cuisine + '\'' + 
-			",leaf = '" + leaf + '\'' + 
-			",fruiting_season = '" + fruitingSeason + '\'' + 
-			",hardiness = '" + hardiness + '\'' + 
-			",tropical = '" + tropical + '\'' + 
-			",sunlight = '" + sunlight + '\'' + 
-			",watering = '" + watering + '\'' + 
-			",flower_color = '" + flowerColor + '\'' + 
-			",fruit_color = '" + fruitColor + '\'' + 
-			",medicinal_method = '" + medicinalMethod + '\'' + 
-			",pest_susceptibility_api = '" + pestSusceptibilityApi + '\'' + 
-			",poisonous_to_pets = '" + poisonousToPets + '\'' + 
-			",care_level = '" + careLevel + '\'' + 
-			",other_name = '" + otherName + '\'' + 
-			",edible_leaf = '" + edibleLeaf + '\'' + 
-			",family = '" + family + '\'' + 
-			",maintenance = '" + maintenance + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return
+				"PlantIndividualInfo{" +
+						"medicinal_use = '" + medicinalUse + '\'' +
+						",endangered = '" + endangered + '\'' +
+						",type = '" + type + '\'' +
+						",salt_tolerant = '" + saltTolerant + '\'' +
+						",leaf_color = '" + leafColor + '\'' +
+						",poison_effects_to_pets = '" + poisonEffectsToPets + '\'' +
+						",growth_rate = '" + growthRate + '\'' +
+						",problem = '" + problem + '\'' +
+						",harvest_season = '" + harvestSeason + '\'' +
+						",cones = '" + cones + '\'' +
+						",rare = '" + rare + '\'' +
+						",attracts = '" + attracts + '\'' +
+						",poison_effects_to_humans = '" + poisonEffectsToHumans + '\'' +
+						",id = '" + id + '\'' +
+						",common_name = '" + commonName + '\'' +
+						",cuisine_list = '" + cuisineList + '\'' +
+						",endangered_level = '" + endangeredLevel + '\'' +
+						",pest_susceptibility = '" + pestSusceptibility + '\'' +
+						",edible_fruit_taste_profile = '" + edibleFruitTasteProfile + '\'' +
+						",flowers = '" + flowers + '\'' +
+						",invasive = '" + invasive + '\'' +
+						",scientific_name = '" + scientificName + '\'' +
+						",poisonous_to_humans = '" + poisonousToHumans + '\'' +
+						",leaf_nutritional_value = '" + leafNutritionalValue + '\'' +
+						",poison_to_humans_cure = '" + poisonToHumansCure + '\'' +
+						",propagation = '" + propagation + '\'' +
+						",indoor = '" + indoor + '\'' +
+						",default_image = '" + defaultImage + '\'' +
+						",thorny = '" + thorny + '\'' +
+						",edible_leaf_taste_profile = '" + edibleLeafTasteProfile + '\'' +
+						",flowering_season = '" + floweringSeason + '\'' +
+						",origin = '" + origin + '\'' +
+						",hardiness_location_image = '" + hardinessLocationImage + '\'' +
+						",edible_fruit = '" + edibleFruit + '\'' +
+						",fruit_nutritional_value = '" + fruitNutritionalValue + '\'' +
+						",description = '" + description + '\'' +
+						",soil = '" + soil + '\'' +
+						",harvest_method = '" + harvestMethod + '\'' +
+						",medicinal = '" + medicinal + '\'' +
+						",cycle = '" + cycle + '\'' +
+						",fruits = '" + fruits + '\'' +
+						",poison_to_pets_cure = '" + poisonToPetsCure + '\'' +
+						",rare_level = '" + rareLevel + '\'' +
+						",dimension = '" + dimension + '\'' +
+						",drought_tolerant = '" + droughtTolerant + '\'' +
+						",cuisine = '" + cuisine + '\'' +
+						",leaf = '" + leaf + '\'' +
+						",fruiting_season = '" + fruitingSeason + '\'' +
+						",hardiness = '" + hardiness + '\'' +
+						",tropical = '" + tropical + '\'' +
+						",sunlight = '" + sunlight + '\'' +
+						",watering = '" + watering + '\'' +
+						",flower_color = '" + flowerColor + '\'' +
+						",fruit_color = '" + fruitColor + '\'' +
+						",medicinal_method = '" + medicinalMethod + '\'' +
+						",pest_susceptibility_api = '" + pestSusceptibilityApi + '\'' +
+						",poisonous_to_pets = '" + poisonousToPets + '\'' +
+						",care_level = '" + careLevel + '\'' +
+						",other_name = '" + otherName + '\'' +
+						",edible_leaf = '" + edibleLeaf + '\'' +
+						",family = '" + family + '\'' +
+						",maintenance = '" + maintenance + '\'' +
+						"}";
+	}
 }

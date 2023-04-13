@@ -3,7 +3,6 @@ package com.kueerickpatrick.plantinfo.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.DataInput;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +14,6 @@ import javax.servlet.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import com.kueerickpatrick.plantinfo.entity.plantObjects.DataItem;
 
@@ -65,6 +63,7 @@ public class Search extends HttpServlet {
             List<DataItem> results = null;
             // get query from form submission
             String query = request.getParameter("query");
+            request.setAttribute("userQuery", query);
             logger.debug("User query: " + query);
             // call API
             try {
@@ -74,7 +73,7 @@ public class Search extends HttpServlet {
             }
             // set request attribute
             request.setAttribute("results", foundPlants);
-            logger.debug("Current request attribute value for result: " + request.getAttribute("result"));
+            logger.debug("Current request attribute value for result: " + request.getAttribute("results"));
             // forward results back to search for display
             String url = "/WEB-INF/search.jsp";
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(url);

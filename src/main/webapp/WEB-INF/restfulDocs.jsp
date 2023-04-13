@@ -64,11 +64,12 @@
             <div class="container">
                 <p>
                     <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#showSearchIdPath" aria-expanded="false" aria-controls="showSearchIdPath">
+                            data-bs-target="#showPlantSearchIdPath" aria-expanded="false"
+                            aria-controls="showPlantSearchIdPath">
                         EntJava2023KueErickPatrick_war/rest/search/id/
                     </button>
                 </p>
-                <div class="collapse" id="showSearchIdPath">
+                <div class="collapse" id="showPlantSearchIdPath">
                     <div class="card card-body">
                         This API path will allow you to search for the name of any plant that is in the Perenual
                         database
@@ -79,7 +80,7 @@
                                 JSON Response Example
                             </button>
                         </p>
-                        <div class="collapse" id="showSearchIdResponse">
+                        <div class="collapse" id="showPlantSearchIdResponse">
                             <div class="card card-body">
                                 <pre>
                                     <code>
@@ -167,6 +168,180 @@
                 </div>
             </div>
             <h2>User API</h2>
+            <div class="container">
+                <p>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#showSearchUserIdPath" aria-expanded="false"
+                            aria-controls="showSearchUserIdPath">
+                        EntJava2023KueErickPatrick_war/rest/plantinfo/user/{id}
+                    </button>
+                </p>
+                <div class="collapse" id="showSearchUserIdPath">
+                    <div class="card card-body">
+                        This API path will allow you to search for the user of anyone within the database
+                        <p>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#showSearchUserIdResponse" aria-expanded="false"
+                                    aria-controls="showSearchUserIdResponse">
+                                JSON Response Example
+                            </button>
+                        </p>
+                        <div class="collapse" id="showSearchUserIdResponse">
+                            <div class="card card-body">
+                                <pre>
+                                    <code>
+{
+  "id" : 1,
+  "firstname" : "Kue",
+  "lastname" : "Xiong",
+  "username" : "kxiong",
+  "userplants" : [ {
+    "id" : 1
+  }, {
+    "id" : 2
+  } ]
+}
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <p>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#showUserPlantsPath" aria-expanded="false"
+                            aria-controls="showUserPlantsPath">
+                        EntJava2023KueErickPatrick_war/rest/plantinfo/user/{id}/plants
+                    </button>
+                </p>
+                <div class="collapse" id="showUserPlantsPath">
+                    <div class="card card-body">
+                        This API path will allow you to search for the name of any plant that is in the Perenual
+                        database
+                        <p>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#showUserPlantsResponse" aria-expanded="false"
+                                    aria-controls="showUserPlantsResponse">
+                                JSON Response Example
+                            </button>
+                        </p>
+                        <div class="collapse" id="showUserPlantsResponse">
+                            <div class="card card-body">
+                                <pre>
+                                    <code>
+[ {
+  "id" : 1,
+  "perenualid" : 1,
+  "userplants" : [ {
+    "id" : 3
+  }, {
+    "id" : 2
+  } ]
+}, {
+  "id" : 2,
+  "perenualid" : 3,
+  "userplants" : [ {
+    "id" : 1
+  } ]
+} ]
+
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <p>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#showPlantsUserIdPath" aria-expanded="false"
+                            aria-controls="showPlantsUserIdPath">
+                        EntJava2023KueErickPatrick_war/rest/plantinfo/plant/{id}
+                    </button>
+                </p>
+                <div class="collapse" id="showPlantsUserIdPath">
+                    <div class="card card-body">
+                        This API path will allow you to search for the name of any plant that is in the Perenual
+                        database
+                        <p>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#showPlantsUserIdResponse" aria-expanded="false"
+                                    aria-controls="showPlantsUserIdResponse">
+                                JSON Response Example
+                            </button>
+                        </p>
+                        <div class="collapse" id="showPlantsUserIdResponse">
+                            <div class="card card-body">
+                                <pre>
+                                    <code>
+{
+  "id" : 1,
+  "perenualid" : 1,
+  "userplants" : [ {
+    "id" : 3
+  }, {
+    "id" : 2
+  } ]
+}
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <p>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#showUserPlantAssociation" aria-expanded="false"
+                            aria-controls="showUserPlantAssociation">
+                        EntJava2023KueErickPatrick_war/rest/plantinfo/plant/{id}/users
+                    </button>
+                </p>
+                <div class="collapse" id="showUserPlantAssociation">
+                    <div class="card card-body">
+                        This API path will allow you to search for the name of any plant that is in the Perenual
+                        database
+                        <p>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#showSearchIdResponse" aria-expanded="false"
+                                    aria-controls="showSearchIdResponse">
+                                JSON Response Example
+                            </button>
+                        </p>
+                        <div class="collapse" id="showSearchIdResponse">
+                            <div class="card card-body">
+                                <pre>
+                                    <code>
+[ {
+  "id" : 2,
+  "firstname" : "Spongebob",
+  "lastname" : "Square Pants",
+  "username" : "ssquarepants",
+  "userplants" : [ {
+    "id" : 3
+  } ]
+}, {
+  "id" : 1,
+  "firstname" : "Kue",
+  "lastname" : "Xiong",
+  "username" : "kxiong",
+  "userplants" : [ {
+    "id" : 1
+  }, {
+    "id" : 2
+  } ]
+} ]
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

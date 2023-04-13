@@ -25,6 +25,9 @@
           <a class="nav-link" href="${pageContext.request.contextPath}/search">Search</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="${pageContext.request.contextPath}/restfulDocs">API Documentation</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="./logIn">Login</a>
         </li>
       </ul>

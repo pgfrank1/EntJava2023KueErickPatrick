@@ -57,3 +57,4 @@ fabric.properties
 aws.properties
 /src/test/resources
 /src/main/resources/
+/.idea/dataSources.local.xml

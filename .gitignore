@@ -59,3 +59,4 @@ aws.properties
 /src/test/resources
 /src/main/resources/
 /src/main/.ebextensions/https-instance.config
+/.idea/dataSources.local.xml

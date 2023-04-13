@@ -63,45 +63,70 @@ public class UserServlet extends HttpServlet {
         // TODO: Get user from authentication service rather than hard-coded
         // getUser(request.getAttribute("userFromAuthenticationService"));
         // for now uses Kue as a placeholder
-        try {
-            getUser(1);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            getUser(1);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+
         // set url
         String url = "/WEB-INF/user-profile.jsp";
-        // set page title
-        request.setAttribute("pageTitle", user.getFirstname() + "'s profile");
-        // set user
+
+        // Instantiate GenericDao of User object.
+        userDao = new GenericDao(User.class);
+
+        // Get username from session
+        HttpSession session = request.getSession(false);
+
+        int sessionUser = (int)session.getAttribute("id");
+        logger.info("The id in session is: " + sessionUser);
+
+        // Get user by id
+        User retrievedUser = (User)userDao.getById(sessionUser);
+        logger.info("The retrieved user is: " + retrievedUser.getFirstname());
+        this.user = retrievedUser;
+
+        // parse user's plants
+        try {
+            parsePlantList(user.getUserplants());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        // set page title
+//        request.setAttribute("pageTitle", user.getFirstname() + "'s profile");
+//        // set user
         request.setAttribute("user", user);
-        // set user's plants
+//        // set user's plants
         request.setAttribute("plantList", plantMap);
+
         // get dispatcher
         RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(url);
         // forward
         dispatcher.forward(request, response);
     }
 
-    /**
-     * Gets user from db
-     * @param userId the id of the user to get
-     * @throws Exception if there is an error getting the user
-     */
-    private void getUser(int userId) throws Exception {
-        // instantiate userDao
-        userDao = new GenericDao(User.class);
-        // get user from db
-        User user = (User)userDao.getById(userId);
-        // check if user is null
-        if (user == null) {
-            logger.error("User not found");
-        } else {
-            // parse user's plants
-            parsePlantList(user.getUserplants());
-            // set user
-            this.user = user;
-        }
-    }
+//    /**
+//     * Gets user from db
+//     * @param userId the id of the user to get
+//     * @throws Exception if there is an error getting the user
+//     */
+//    private void getUser(int userId) throws Exception {
+//
+//        // instantiate userDao
+//        userDao = new GenericDao(User.class);
+//        // get user from db
+//        User user = (User)userDao.getById(userId);
+//        // check if user is null
+//        if (user == null) {
+//            logger.error("User not found");
+//        } else {
+//            // parse user's plants
+//            parsePlantList(user.getUserplants());
+//            // set user
+//            this.user = user;
+//        }
+//    }
 
     /**
      * Parses plant list from db

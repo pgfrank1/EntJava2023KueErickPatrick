@@ -118,7 +118,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         logger.info("User information has been added to session");
 
         // Upon successfully signing in, user is taken to Patient List
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/patientListServlet");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/user");
         dispatcher.forward(req, resp);
     }
 
@@ -131,16 +131,20 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         List<User> usersDatabase = (List<User>) userDao.getByPropertyLike("username", username);
         logger.info("The username to check is: " + username);
         logger.info("The list of database users are: " + usersDatabase);
-        logger.info(usersDatabase.stream().anyMatch(user -> username.equals(user.getUsername())));
+//        logger.info(usersDatabase.stream().anyMatch(user -> username.equals(user.getUsername())));
+//        logger.info((usersDatabase.stream().filter(user -> user.getUsername().equals(username)).findFirst().isPresent()));
+        logger.info("The username issss: " + usersDatabase.get(0).getUsername());
         // Add user to table if doesn't already exist
-        if (usersDatabase.stream().anyMatch(user -> user.equals(user.getUsername())) == false) {
+
+//        if (usersDatabase.contains(username)) {
+        if ((usersDatabase.stream().filter(user -> user.getUsername().equals(username)).findFirst().isPresent())) {
+            id = usersDatabase.get(0).getId();
+            logger.info("Retrieved user ID is: " + id);
+        } else {
             logger.info("Got into the if-statement");
             User user = new User(firstName, lastName, username);
             id = userDao.insert(user);
             logger.info("User has been added to USER table");
-        } else {
-            id = usersDatabase.get(0).getId();
-            logger.info("Retrieved user ID is: " + id);
         }
 
         return id;
@@ -219,24 +223,17 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         String userName = jwt.getClaim("cognito:username").asString();
         logger.debug("here's the username: " + userName);
 
-        String firstName = jwt.getClaim("name").asString();
+        String firstName = jwt.getClaim("given_name").asString();
         logger.debug("here's the first name: " + firstName);
 
         String lastName = jwt.getClaim("family_name").asString();
         logger.debug("here's the last name: " + lastName);
 
-        String email = jwt.getClaim("email").asString();
-        logger.debug("here's the email: " + email);
-
         logger.debug("here are all the available claims: " + jwt.getClaims());
-
-        // TODO decide what you want to do with the info! <--store username in session
-        // for now, I'm just returning username for display back to the browser
 
         List<String> userLoginInfo = new ArrayList<>();
         userLoginInfo.add(firstName);
         userLoginInfo.add(lastName);
-        userLoginInfo.add(email);
         userLoginInfo.add(userName);
 
         return userLoginInfo;

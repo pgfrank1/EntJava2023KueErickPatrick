@@ -33,6 +33,8 @@ public class StartupServlet extends HttpServlet implements PropertiesLoader {
             getServletContext().setAttribute("plantCycles", properties.getProperty("plant.cycles"));
             getServletContext().setAttribute("plantWateringNeeds", properties.getProperty("plant.watering.need"));
             getServletContext().setAttribute("plantSunlightNeeds", properties.getProperty("plant.sunlight.need"));
+            getServletContext().setAttribute("awsUrl", properties.getProperty("aws.url"));
+            getServletContext().setAttribute("localUrl", properties.getProperty("local.url"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

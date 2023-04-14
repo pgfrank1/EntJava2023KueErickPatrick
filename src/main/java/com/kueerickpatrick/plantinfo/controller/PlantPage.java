@@ -76,7 +76,7 @@ public class PlantPage extends HttpServlet {
         // create client
         Client client = ClientBuilder.newClient();
         // set url to API endpoint with query
-        WebTarget target = client.target("http://localhost:8080/EntJava2023KueErickPatrick_war/rest/search/id/" + queryId);
+        WebTarget target = client.target("http://plantinfo-env.eba-hff4mr2x.us-east-2.elasticbeanstalk.com/rest/search/id/" + queryId);
         // return response
         return mapResponse(target.request(MediaType.APPLICATION_JSON).get(String.class));
     }

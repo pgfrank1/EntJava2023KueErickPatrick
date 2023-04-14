@@ -1,10 +1,8 @@
 package com.kueerickpatrick.plantinfo.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kueerickpatrick.plantinfo.entity.Plant;
 import com.kueerickpatrick.plantinfo.entity.User;
 import com.kueerickpatrick.plantinfo.entity.Userplant;
-import com.kueerickpatrick.plantinfo.entity.plantObjects.DataItem;
 import com.kueerickpatrick.plantinfo.entity.plantObjects.PlantIndividualInfo;
 import com.kueerickpatrick.plantinfo.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
@@ -12,14 +10,17 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 /**
  * User servlet
@@ -166,8 +167,9 @@ public class UserServlet extends HttpServlet {
     public PlantIndividualInfo callAPI(Integer queryId) throws Exception {
         // create client
         Client client = ClientBuilder.newClient();
+
         // set url to API endpoint with query
-        WebTarget target = client.target("http://localhost:8080/EntJava2023KueErickPatrick_war/rest/search/id/" + queryId);
+        WebTarget target = client.target("http://plantinfo-env.eba-hff4mr2x.us-east-2.elasticbeanstalk.com/rest/search/id/" + queryId);
         // return response
         return mapResponse(target.request(MediaType.APPLICATION_JSON).get(String.class));
     }

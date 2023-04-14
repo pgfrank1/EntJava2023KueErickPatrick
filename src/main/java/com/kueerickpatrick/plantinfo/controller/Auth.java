@@ -133,13 +133,14 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         logger.info("The list of database users are: " + usersDatabase);
 //        logger.info(usersDatabase.stream().anyMatch(user -> username.equals(user.getUsername())));
 //        logger.info((usersDatabase.stream().filter(user -> user.getUsername().equals(username)).findFirst().isPresent()));
-        logger.info("The username issss: " + usersDatabase.get(0).getUsername());
+
+        String retrievedUsername = usersDatabase.get(0).getUsername();
+        logger.info("The username issss: " + retrievedUsername);
         // Add user to table if doesn't already exist
 
-
-        if (retreivedUserId = null) {
 //        if (usersDatabase.contains(username)) {
 //        if ((usersDatabase.stream().filter(user -> user.getUsername().equals(username)).findFirst().isPresent())) {
+        if (retrievedUsername.equals(username)) {
             id = usersDatabase.get(0).getId();
             logger.info("Retrieved user ID is: " + id);
         } else {

@@ -93,7 +93,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 TokenResponse tokenResponse = getToken(authRequest);
                 userLoginInfo = validate(tokenResponse);
                 firstName = userLoginInfo.get(0);
-                logger.info("First Name from token is: " + firstName);
                 lastName = userLoginInfo.get(1);
                 username = userLoginInfo.get(2);
             } catch (IOException e) {
@@ -115,7 +114,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         session.setAttribute("lastName", lastName);
         session.setAttribute("username", username);
         session.setAttribute("id", userID);
-        logger.info("User information has been added to session");
 
         // Upon successfully signing in, user is taken to Patient List
         RequestDispatcher dispatcher = req.getRequestDispatcher("/user");
@@ -129,25 +127,16 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
         GenericDao userDao = new GenericDao(User.class);
         List<User> usersDatabase = (List<User>) userDao.getByPropertyLike("username", username);
-        logger.info("The username to check is: " + username);
-        logger.info("The list of database users are: " + usersDatabase);
-//        logger.info(usersDatabase.stream().anyMatch(user -> username.equals(user.getUsername())));
-//        logger.info((usersDatabase.stream().filter(user -> user.getUsername().equals(username)).findFirst().isPresent()));
 
-        String retrievedUsername = usersDatabase.get(0).getUsername();
-        logger.info("The username issss: " + retrievedUsername);
-        // Add user to table if doesn't already exist
-
-//        if (usersDatabase.contains(username)) {
-//        if ((usersDatabase.stream().filter(user -> user.getUsername().equals(username)).findFirst().isPresent())) {
-        if (retrievedUsername.equals(username)) {
-            id = usersDatabase.get(0).getId();
-            logger.info("Retrieved user ID is: " + id);
-        } else {
+        if (usersDatabase.isEmpty()) {
             logger.info("Got into the if-statement");
             User user = new User(firstName, lastName, username);
             id = userDao.insert(user);
             logger.info("User has been added to USER table");
+        } else {
+//            (retrievedUsername.equals(username)) {
+            id = usersDatabase.get(0).getId();
+            logger.info("Retrieved user ID is: " + id);
         }
 
         return id;

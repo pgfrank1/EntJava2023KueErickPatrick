@@ -92,8 +92,6 @@ public class UserServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-//        // set page title
-//        request.setAttribute("pageTitle", user.getFirstname() + "'s profile");
 //        // set user
         request.setAttribute("user", user);
 //        // set user's plants

@@ -167,6 +167,9 @@
                                      <p>${selectedPlant.getDescription()}</p>
                                  </c:otherwise>
                              </c:choose>
+                                 <form method="post" action="addPlant">
+                                     <button type="submit" name="plantId" value="${selectedPlant.getId()}">Add</button>
+                                 </form>
                          </div>
                      </div>
                  </div>

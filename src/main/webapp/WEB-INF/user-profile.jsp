@@ -28,7 +28,7 @@
                 <div class="row">
                     <%-- user message col --%>
                     <div class="col p-0 mb-2">
-                        <h3>There's never a wrong time to stop and smell the flowers, ${user.getFirstname()}</h3>
+                        <h3>There's never a wrong time to stop and smell the flowers, ${user.firstname}</h3>
                     </div>
                     <h3 class="p-0">Your garden:</h3>
                     <%-- user's plants table --%>

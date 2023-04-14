@@ -5,12 +5,13 @@
 ## Directory-based project format:
 # .idea/
 # if you remove the above rule, at least ignore the following:
-
+.DS_Store*
 # User-specific stuff:
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/dictionaries
 .idea/shelf
+.idea/modules.xml
 src/main/resources/hibernate.cfg.xml
 src/main/resources/log4j2.properties
 src/test/resources/database.properties
@@ -23,6 +24,7 @@ src/main/resources/perenualAPI.properties
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/dataSources*
 
 # Gradle:
 .idea/gradle.xml
@@ -57,4 +59,5 @@ fabric.properties
 aws.properties
 /src/test/resources
 /src/main/resources/
+/src/main/.ebextensions/https-instance.config
 /.idea/dataSources.local.xml

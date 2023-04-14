@@ -82,13 +82,17 @@ public class UserServlet extends HttpServlet {
         logger.info("The id in session is: " + sessionUser);
 
         // Get user by id
-        User retrievedUser = (User)userDao.getById(sessionUser);
-        logger.info("The retrieved user is: " + retrievedUser.getFirstname());
-        this.user = retrievedUser;
+        user = (User)userDao.getById(sessionUser);
+
+        logger.info("The retrieved user is: " + user.getFirstname());
+
+        logger.info("The retrieved user's plants are: " + user.getUserplants());
+
+        Set<Userplant> userplants = user.getUserplants();
 
         // parse user's plants
         try {
-            parsePlantList(user.getUserplants());
+            parsePlantList(userplants);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -136,10 +140,21 @@ public class UserServlet extends HttpServlet {
     private void parsePlantList(Set<Userplant> userPlants) throws Exception {
         // instantiate map
         plantMap = new LinkedHashMap<>();
+
+        logger.info("I am in the parsePlantList()");
+
+
         // for each UserPlant add id and plant to map
         for (Userplant userPlant : userPlants) {
+
+            logger.info("I got into the for loop");
+            logger.info(userPlant.getId());
+            logger.info(callAPI(userPlant.getPlantid().getPerenualid()));
+
             plantMap.put(userPlant.getId(), callAPI(userPlant.getPlantid().getPerenualid()));
+            logger.info("The plants in plantsMap are: " + plantMap);
         }
+
     }
 
     /**

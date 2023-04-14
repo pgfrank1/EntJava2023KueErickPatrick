@@ -1,6 +1,8 @@
 package com.kueerickpatrick.plantinfo.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -20,14 +22,16 @@ public class Userplant {
     @Access(value = PROPERTY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "userid")
+    @JsonIgnore
     private User userid;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "plantid")
+    @JsonIgnore
     private Plant plantid;
 
     /**
@@ -115,5 +119,14 @@ public class Userplant {
     @Override
     public int hashCode() {
         return Objects.hash(id, userid, plantid);
+    }
+
+    @Override
+    public String toString() {
+        return "Userplant{" +
+                "id=" + id +
+                ", userid=" + userid +
+                ", plantid=" + plantid +
+                '}';
     }
 }

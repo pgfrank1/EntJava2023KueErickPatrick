@@ -10,7 +10,7 @@ import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
-@ApplicationPath("/rest/")
+@ApplicationPath("/rest")
 public class PlantApplication extends Application {
     /**
      * Gets classes needed for REST service.
@@ -20,6 +20,7 @@ public class PlantApplication extends Application {
     public Set<Class<?>> getClasses() {
         HashSet restClasses = new HashSet<Class<?>>();
         restClasses.add(PlantDataRetrieval.class);
+        restClasses.add(UserPlantREST.class);
         return restClasses;
     }
 }

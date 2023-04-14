@@ -1,21 +1,24 @@
 package com.kueerickpatrick.plantinfo.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kueerickpatrick.plantinfo.entity.plantObjects.DataItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import javax.ws.rs.client.*;
-import javax.ws.rs.core.MediaType;
-
-import com.kueerickpatrick.plantinfo.entity.plantObjects.DataItem;
 
 /**
  * Search
@@ -89,7 +92,7 @@ public class Search extends HttpServlet {
         // create client
         Client client = ClientBuilder.newClient();
         // set url to API endpoint with query
-        WebTarget target = client.target("http://localhost:8080/EntJava2023KueErickPatrick_war/rest/search/" + query);
+        WebTarget target = client.target("http://plantinfo-env.eba-hff4mr2x.us-east-2.elasticbeanstalk.com/rest/search/" + query);
         // return response
         mapResponse(target.request(MediaType.APPLICATION_JSON).get(String.class));
     }

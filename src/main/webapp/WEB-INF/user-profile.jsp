@@ -10,9 +10,9 @@
 <%-- head.jsp inclusion --%>
 <%@include file="head.jsp"%>
 <%-- get username from request scope --%>
-<c:set var="user" value='${requestScope["user"]}' />
+<c:set var="user" value='${sessionScope["user"]}' />
 <%-- get user's plant list from request scope --%>
-<c:set var="plantList" value='${requestScope["plantList"]}' />
+<c:set var="plantList" value='${sessionScope["plantList"]}' />
 <%-- body --%>
 <body class="bg-custom-mint-green">
 <%-- main container --%>
@@ -43,7 +43,7 @@
                             <c:forEach items="${plantList}" var="plant">
                             <tr>
                                 <td>${plant.getKey()}</td>
-                                <td><a href="http://localhost:8080/EntJava2023KueErickPatrick_war/plantPage?idToSearch=${plant.getValue().getId()}">${plant.getValue().getCommonName()}</a></td>
+                                <td><a href="http://localhost:8080/EntJava2023KueErickPatrick_war/plantPage?idToSearch=${plant.getValue().getId()}&userPlantId=${plant.getKey()}">${plant.getValue().getCommonName()}</a></td>
                             </tr>
                             </c:forEach>
                         </tbody>

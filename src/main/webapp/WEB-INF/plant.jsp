@@ -167,9 +167,18 @@
                                      <p>${selectedPlant.getDescription()}</p>
                                  </c:otherwise>
                              </c:choose>
-                                 <form method="post" action="addPlant">
-                                     <button type="submit" name="plantId" value="${selectedPlant.getId()}">Add</button>
-                                 </form>
+                             <c:choose>
+                                 <c:when test="${selectedPlant.getId() != null}">
+                                     <form method="post" action="deletePlant">
+                                         <button type="submit" name="plantId" value="${userPlantId}">Delete</button>
+                                     </form>
+                                 </c:when>
+                                 <c:otherwise>
+                                     <form method="post" action="addPlant">
+                                         <button type="submit" name="plantId" value="${selectedPlant.getId()}">Add</button>
+                                     </form>
+                                 </c:otherwise>
+                             </c:choose>
                          </div>
                      </div>
                  </div>

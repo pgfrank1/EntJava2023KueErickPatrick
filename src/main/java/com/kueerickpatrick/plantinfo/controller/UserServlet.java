@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -62,13 +63,6 @@ public class UserServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         // TODO: Get user from authentication service rather than hard-coded
-        // getUser(request.getAttribute("userFromAuthenticationService"));
-        // for now uses Kue as a placeholder
-//        try {
-//            getUser(1);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
 
         // set url
         String url = "/WEB-INF/user-profile.jsp";
@@ -110,28 +104,6 @@ public class UserServlet extends HttpServlet {
         // forward
         dispatcher.forward(request, response);
     }
-
-//    /**
-//     * Gets user from db
-//     * @param userId the id of the user to get
-//     * @throws Exception if there is an error getting the user
-//     */
-//    private void getUser(int userId) throws Exception {
-//
-//        // instantiate userDao
-//        userDao = new GenericDao(User.class);
-//        // get user from db
-//        User user = (User)userDao.getById(userId);
-//        // check if user is null
-//        if (user == null) {
-//            logger.error("User not found");
-//        } else {
-//            // parse user's plants
-//            parsePlantList(user.getUserplants());
-//            // set user
-//            this.user = user;
-//        }
-//    }
 
     /**
      * Parses plant list from db

@@ -50,12 +50,15 @@ public class PlantPage extends HttpServlet {
         logger.debug("Query string is: " + request.getParameter("idToSearch"));
         // get plant from API
         Integer selectedId = Integer.parseInt(request.getParameter("idToSearch"));
-        Integer userPlantId = Integer.parseInt(request.getParameter("userPlantId"));
+        Integer userPlantId;
+        if (request.getParameter("userPlantId") != null) {
+            userPlantId = Integer.parseInt(request.getParameter("userPlantId"));
+            request.setAttribute("userPlantId", userPlantId);
+        }
         // try to get plant
         try {
             PlantIndividualInfo selectedPlant = callAPI(selectedId);
             request.setAttribute("selectedPlant", selectedPlant);
-            request.setAttribute("userPlantId", userPlantId);
         } catch (Exception e) {
             logger.error("Error getting plant: " + e);
         }

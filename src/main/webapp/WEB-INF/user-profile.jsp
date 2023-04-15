@@ -41,10 +41,12 @@
                         </thead>
                         <tbody>
                             <c:forEach items="${plantList}" var="plant">
-                            <tr>
-                                <td>${plant.getKey()}</td>
-                                <td><a href="http://localhost:8080/EntJava2023KueErickPatrick_war/plantPage?idToSearch=${plant.getValue().getId()}&userPlantId=${plant.getKey()}">${plant.getValue().getCommonName()}</a></td>
-                            </tr>
+                                <tr>
+                                    <td>${plant.getKey()}</td>
+                                    <td>
+                                        <a href="https://plantinfo-env.eba-hff4mr2x.us-east-2.elasticbeanstalk.com/plantPage?idToSearch=${plant.getValue().getId()}&userPlantId=${plant.getKey()}">${plant.getValue().getCommonName()}</a>
+                                    </td>
+                                </tr>
                             </c:forEach>
                         </tbody>
                     </table>

@@ -44,7 +44,7 @@ public class PlantDataRetrieval implements PropertiesLoader {
     @Context
     ServletContext context;
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private static List<DataItem> foundPlants = new ArrayList<>();
+    private List<DataItem> foundPlants = new ArrayList<>();
 
 
     /**
@@ -115,8 +115,6 @@ public class PlantDataRetrieval implements PropertiesLoader {
             //Gets the API response and places it in a String
             ObjectMapper mapper = new ObjectMapper();
             PlantDetailList plantDetailList = mapper.readValue(apiResponse, PlantDetailList.class);
-            // clear results
-            foundPlants.clear();
             // add new results
             foundPlants.addAll(plantDetailList.getData());
         }

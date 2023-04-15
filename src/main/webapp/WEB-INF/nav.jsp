@@ -27,9 +27,18 @@
         <li class="nav-item">
           <a class="nav-link" href="${pageContext.request.contextPath}/restfulDocs">API Documentation</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./logIn">Login</a>
-        </li>
+        <c:choose>
+          <c:when test="${sessionScope.username != null}" >
+            <li class="nav-item">
+              <a class="nav-link" href="./user"><c:out value="${sessionScope.username}"/></a>
+            </li>
+          </c:when>
+          <c:otherwise>
+          <li class="nav-item">
+            <a class="nav-link" href="./logIn">Login</a>
+          </li>
+          </c:otherwise>
+        </c:choose>
       </ul>
     </div>
   </div>

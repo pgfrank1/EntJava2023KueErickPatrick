@@ -93,9 +93,9 @@ public class UserServlet extends HttpServlet {
         }
 
 //        // set user
-        request.setAttribute("user", user);
+        session.setAttribute("user", user);
 //        // set user's plants
-        request.setAttribute("plantList", plantMap);
+        session.setAttribute("plantList", plantMap);
 
         // get dispatcher
         RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(url);

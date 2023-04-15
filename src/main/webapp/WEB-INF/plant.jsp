@@ -168,7 +168,7 @@
                                  </c:otherwise>
                              </c:choose>
                              <c:choose>
-                                 <c:when test="${selectedPlant.getId() != null}">
+                                 <c:when test="${userPlantId != null}">
                                      <form method="post" action="deletePlant">
                                          <button type="submit" name="plantId" value="${userPlantId}">Delete</button>
                                      </form>

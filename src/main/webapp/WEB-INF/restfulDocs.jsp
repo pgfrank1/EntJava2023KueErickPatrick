@@ -75,7 +75,7 @@
                         database
                         <p>
                             <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#showSearchIdResponse" aria-expanded="false"
+                                    data-bs-target="#showPlantSearchIdResponse" aria-expanded="false"
                                     aria-controls="showSearchIdResponse">
                                 JSON Response Example
                             </button>
